@@ -1,0 +1,138 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{amssymb}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{HW2}
+\author{Michael B. Nattinger\footnote{I worked on this assignment with my study group: Alex von Hafften, Andrew Smith, Ryan Mather, and Tyler Welch. I have also discussed problem(s) with Emily Case, Sarah Bass, and Danny Edgel.}}
+
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+Consider the set $A = \{ \frac{1}{n} \}_{n \in \mathbb{N}} = \{1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots \}.$ I will prove that there does not exist $S \subset \mathbb{R}$ s.t. the set of $S$'s limit points is $A$.
+
+\underline{pf} Assume for the purpose of contradiction the existence of $S \subset \mathbb{R}$, where the set of $S$'s limit points are equal to A. We will show that 0 is a limit point. Let $\epsilon > 0$ be arbitrary. Let $n$ be the smallest $N \in \mathbb{N}$ such that $\frac{1}{N}< \epsilon.$ Then, since $\frac{1}{2n} \in A$, $\frac{1}{2n}$ is a limit point of $S$ so $\exists s \in S$ such that $s$ is in a neighborhood of size $\frac{1}{4n}$ around $\frac{1}{2n}$. Then, $|0 - s| \leq |0 - \left( \frac{1}{2n} + \frac{1}{4n} \right)| = \frac{1}{2n} + \frac{1}{4n} < \frac{1}{n}< \epsilon$. Additionally, we know that $|0 - s| \geq |0 - \left( \frac{1}{2n} - \frac{1}{4n}\right)| = \frac{1}{4n} > 0$ so $s \neq 0$. Thus, every neighborhood of 0 contains a nonzero element of S, so 0 is a limit point of S, but $0 \notin A$, a contradiction.
+%
+%\underline{pf} For $n \in \mathbb{N}$, define $S_n = \{ \frac{1}{n} + \frac{1}{k} | k \in \mathbb{N}\} \subset \mathbb{R}$. Define $S = \bigcup_{i=1}^{\infty} S_n.$ We will notate $a_n \in A$ as $a_n = \frac{1}{n}$.
+%
+%For arbitrary $\tilde{n} \in \mathbb{N}$, we will show that the set of limit points of $S_{\tilde{n}}$ is $\{ \frac{1}{\tilde{n}} \} = \{ a_{\tilde{n}}\}$.
+%Given $\epsilon >0 $ we can find $\tilde{k} = \frac{2}{\epsilon}$ and $|\left(\frac{1}{\tilde{k}} + \frac{1}{\tilde{n}}\right) - \frac{1}{\tilde{n}} | < \epsilon $. So, every neighborhood of $\frac{1}{\tilde{n}}$ intersects $S_{\tilde{n}}$ in at least one point. So, $\frac{1}{\tilde{n}}$ is a limit point of $S_{\tilde{n}}$.
+%
+%We will now show that points other than $\frac{1}{\tilde{n}}$ are not a limit point of $S_{\tilde{n}}$. Let $\lambda$ be a limit point of $S_{\tilde{n}}$.
+%\begin{itemize}
+%\item
+%If $\lambda < \frac{1}{\tilde{n}}$ let $\epsilon = \frac{\lambda - \frac{1}{\tilde{n}}}{2}. $ Then, $(\lambda - \epsilon, \lambda + \epsilon) \cap S_n = \emptyset$, a contradiction. 
+%\item
+%If $\lambda > \frac{1}{\tilde{n}}+1$, let $\epsilon = \frac{\lambda - ( \frac{1}{\tilde{n}} + 1)}{2}$. Then, $(\lambda - \epsilon, \lambda + \epsilon) \cap S_n = \emptyset$, a contradiction. 
+%\item
+%If $\lambda =  \frac{1}{\tilde{n}}+1$, let $\epsilon = \frac{1}{3}$. Then, $(\lambda - \epsilon, \lambda + \epsilon) \cap S_n = \lambda$, a contradiction.
+%\item
+%If $\frac{1}{\tilde{n}} < \lambda < \frac{1}{\tilde{n}} + 1$, let $\hat{n}$ be the integer that minimizes  $|\frac{1}{\hat{n}} +\frac{1}{\tilde{n}} - \lambda|$. Then we set $\epsilon = \frac{1}{2}|\frac{1}{\hat{n}} +\frac{1}{\tilde{n}} - \lambda|$. Then, $(\lambda - \epsilon,\lambda + \epsilon) = \lambda$, if $\lambda \in S_{\tilde{n}}$, otherwise $(\lambda - \epsilon,\lambda + \epsilon) = \emptyset $. In either case we have a contradiction.
+%\end{itemize}
+%Thus, the set of limit points of $S_{\tilde{n}}$ is $\{ \frac{1}{\tilde{n}}\} = \{ a_{\tilde{n}} \}$.
+%
+%Since the limit points of a union of sets is the union of the sets' limit points,\footnote{I will prove this here. \\
+%For $i \in \mathbb{N}$, let $A_i$ be sets and $L_i$ be the sets containing the limit points of $A_i$ for each $i$. Then, let $l \in \bigcup_{k=1}^\infty L_k := L.$ Then, for some $\tilde{k} \in \mathbb{N}$, every neighborhood of $l$ contains an element of $A_{\tilde{k}}$. Thus, letting $A := \bigcup_{k=1}^{\infty} A_k \supseteq A_{\tilde{k}}$, every neighborhood of $l$ contains an element of $A$. Thus $l$ is a limit point of A. \\
+% next part of proof here
+% Do this by contradiction
+%Assume for the purpose of contradiction that there exists $l^*$, a limit point of A with $l^* \notin L$.
+% }, the set of limit points of $S$ is equal to $\bigcup_{i = 1}^{\infty} \{ a_i\} = A$.
+%So, for any $a_n \in A$, we can construct a subsequence $\{ s_n\}$ of $s_n \in S_n \subset S$ converging to $a_n$, so $a_n$ is a limit point of $S$.
+% 
+
+\section{Question 2}
+Prove that $f(x) = \cos{x^2}$ is not uniformly continuous on $\mathbb{R}$.
+
+\underline{pf} Let $\epsilon = 1$ and for the purpose of contradiction assume $f(x)$ is uniformly continuous on $\mathbb{R}$. Then $\exists \delta>0$ s.t. $\forall x,y \in \mathbb{R} $ with $|x - y|<\delta$, $|\cos{x^2} - \cos{y^2}|<1.$ Let $x_k = \sqrt{2 \pi k}, y_k = \sqrt{2 \pi k + \pi }.$ Then, $\lim\limits_{k \rightarrow \infty } |x_k - y_k| = 0.$\footnote{$|x_k - y_k| = |\sqrt{2 \pi k} - \sqrt{2 \pi k + \pi}| = \frac{|2 \pi k - (2 \pi k + \pi)|}{|\sqrt{2 \pi k} + \sqrt{2 \pi k + \pi }|} = \frac{\pi}{|\sqrt{2 \pi k} + \sqrt{2 \pi k + \pi}|} \rightarrow 0$.\\ To prove the limit, take $\epsilon >0$ and define $N$ such that $N$ is the smallest $n \in \mathbb{N}$ such that $n \geq \frac{\left( \frac{\pi}{2\epsilon}\right)^2}{2 \pi}$. Then, for all $n \in \mathbb{N}$ with $n>N$,  $\frac{\pi}{|\sqrt{2 \pi n} + \sqrt{2 \pi n + \pi}|} < \frac{\pi}{|2\sqrt{2 \pi n}|} < \frac{\pi}{2\sqrt{2 \pi N}} \leq \epsilon$.} So, for any $\delta$, we can find $\tilde{k}$ s.t. $|x_{\tilde{k}} - y_{\tilde{k}}| < \delta$, but for any $k$, $|\cos{x_k^2} - \cos{y_k^2}| = |\cos{(2 \pi k)} - \cos{(2 \pi k + \pi)}| = |1 - (-1)| = |2| = 2 > 1.$ This is a contradiction, so $f(x)$ is not uniformly continuous on $\mathbb{R}$.
+\section{Question 3}
+Let $f: \mathbb{R} \rightarrow \mathbb{R}_{++}$ be continuous on an interval $[a,b]$. We will prove that $(\frac{1}{f})$ is bounded on $[a,b]$.
+
+\underline{pf} As $f$ is continuous, by the extreme value theorem $\exists \hat{x},\tilde{x} \in [a,b]$ s.t. $f(\hat{x}) \geq f(x)$ $\forall x \in [a,b]$ and $f(\tilde{x}) \leq f(x)$ $\forall x \in [a,b]$. Since $f(\hat{x}),f(\tilde{x}) >0$, $\exists m,M \in \mathbb{R_{++}}$ s.t. $m <f(\tilde{x})$ and $M > f(\hat{x})$. Assume for the purpose of contradiction that $(\frac{1}{f})$ is not bounded by $\frac{1}{m}$ from above. Then, $\exists c \in [a,b]$ s.t. $(\frac{1}{f})(c) >\frac{1}{m} \Rightarrow f(c) < m$ which is a contradiction. Next, assume for the purpose of contradiction that $(\frac{1}{f})$ is not bounded by $\frac{1}{M}$ from below. Then $\exists d \in [a,b]$ s.t. $(\frac{1}{f})(d) < \frac{1}{M} \Rightarrow f(d) > M$, a contradiction. Thus, $(\frac{1}{f})$ is bounded above by $\frac{1}{m}$ and below by $\frac{1}{M}$ on $[a,b]$. Thus, $(\frac{1}{f})$ is bounded on $[a,b]$.
+
+\section{Question 4}
+Let $f:[a,b] \rightarrow \mathbb{R}$ be a continuous function, $a<b$, $a,b \in \mathbb{R}.$ Assume that $f(a) < 0 < f(b)$. We follow the construction of sequences $\{ l_n \}$ and $\{ u_n \}$ as described in the problem set.
+\subsection{Show that sequences $\{ l_n \}$ and $\{ u_n \}$  both converge.}
+\underline{pf} For arbitrary $n^* \in \mathbb{N}$, $l_{n^*} \leq \frac{l_{n^*} +u_{n^*}}{2} \leq u_{n^*}$\footnote{This is because $u_n \geq l_n$ $\forall n \in \mathbb{N} $ which I will prove here by induction. \\ $u_1 = b \geq a = l_1$. \\ Assume $u_k \geq l_k $ for $k \in \mathbb{N}.$ Then $u_k \geq \frac{u_k + l_k}{2} \geq l_k $ so $u_{k+1} \geq l_{k+1}$. } so $l_n \leq l_{n+1} \leq u_n$ $\forall n \in \mathbb{N}$ and $u_n \geq u_{n+1} \geq l_n$ $\forall n \in \mathbb{N}$. Thus, for any $n \in \mathbb{N}$, $l_1 \leq l_n \leq u_n \leq u_1$. Therefore, $\{ l_n \}$ is monotone increasing and bounded above by $u_1$ and below by $l_1$, and $\{ u_n \}$ is monotone decreasing and bounded below by $l_1$ and above by $u_1$. By the monotone convergence theorem, both $\{ l_n \}$ and $\{ u_n \}$ converge.
+%\footnote{Proof of the monotone convergence theorem: \\
+%Let $\{ x_n \}$ be a monotone sequence, without loss of generality let it be monotone increasing. Let $\{ x_n\}$ be bounded. Then the set $X = \{x_n|n \in \mathbb{N} \}$ is a bounded subset of $\mathbb{R}$. By the Supremum Property, $X$ has a supremum. Define $s = \sup A$. Now let $\epsilon >0$. By the definition of supremum, there exists some $x_N \in X$ s.t. $s - \epsilon < x_N$, and since $\{ x_n \}$ is increasing then $\forall n >N$, $s - \epsilon < a_N < a_n$. Also, $a_n \in A$ so $a_n \leq s < s+ \epsilon \Rightarrow s-\epsilon < a_n < s+ \epsilon \Rightarrow |a_n - s|<\epsilon$ $\forall n>N$. Thus, $\{a_n\} \rightarrow s$, so $\{a_n\}$ converges.} 
+
+\subsection{Both sequences converge to the same limit}
+\underline{pf} We now define a new sequence $\{ a_n \}$ with $a_n = u_n - l_n$ $\forall n \in \mathbb{N}$. During each $n$ we are stepping midway in between $u_n$ and $l_n$, or we are setting $u_n = l_n$, so $a_n \leq \frac{b - a}{2^{n-1}}$.\footnote{I will prove $a_n = \frac{b-a}{2^{n-1}}$ or $a_n = 0$ formally here by induction.  $a_1 = u_1 - l_1 = b - a \leq \frac{b-a}{2^{1-1}}$. \\ Assume $a_k = \frac{b-a}{2^{k-1}}$. Then, $a_{k+1} = u_{k+1} - l_{k+1} = u_k - l_k - \frac{u_k - l_k}{2} = \frac{u_k - l_k}{2} = \frac{a_k}{2} = \frac{b-a}{2*2^{k-1}} = \frac{b-a}{2^{(k+1)-1}}$, or $a_{k+1} = 0$. Now assume $a_k = 0$. Then, $a_{k+1} = 0$. Thus, $a_n \leq \frac{b-a}{2^n}$ $\forall n \in \mathbb{N}$.}  $ \frac{b - a}{2^{n-1}} \rightarrow 0$\footnote{To prove $\lim\limits_{n \rightarrow \infty}\frac{b-a}{2^{n-1}} = 0$, let $\epsilon > 0$. We can choose $N$ to be the smallest $n \in \mathbb{N}$ such that $n \geq \log_{2} \left( \frac{b-a}{\epsilon}\right)+1$ and for $n>N$, $|\frac{b-a}{2^{n - 1}} - 0 | < |\frac{b-a}{2^{N}}| \leq \epsilon$. } and $\frac{b - a}{2^{n-1}} \geq a_n \geq 0$ $\forall n \in \mathbb{N}$ so $a_n \rightarrow 0$ by the squeeze theorem. Thus, $\{ u_n - l_n \} = \{a_n \} \rightarrow 0$, and it follows that $\lim\limits_{n \rightarrow \infty}u_n = \lim\limits_{n \rightarrow \infty}l_n $.
+%We now define a new sequence $\{ a_n \}$ with $a_n = u_n - l_n \forall n \in \mathbb{N}$. Note that $u_n \geq 0 \forall n \in \mathbb{N}$ and $l_n \leq 0 \forall n \in \mathbb{N}$, so $a_n \geq 0 \forall n \in \mathbb{N}$. Also, note that, for arbitrary $n^* \in \mathbb{N}$, $a_{n^*} = u_{n^*} - l_{n^*} \geq u_{n^*+1} - l _{n^*+1} = a_{n^* + 1}$. Therefore, $\{ a_n\}$ is a monotonically decreasing sequence, bounded below by 0, so by the monotone convergence theorem $\{ a_{n}\}$ converges. In fact, during each $n$ we are stepping midway in between $u_n$ and $l_n$, so $a_n = \frac{b - a}{2^{n-1}} \rightarrow 0$.\footnote{I will prove this formally here by induction. \\ $a_1 = u_1 - l_1 = b - a = \frac{b-a}{2^{1-1}}$. \\ Assume $a_k = \frac{b-a}{2^{k-1}}$. Then, $a_{k+1} = u_{k+1} - l_{k+1} = u_k - l_k - \frac{u_k - l_k}{2} = \frac{u_k - l_k}{2} = \frac{a_k}{2} = \frac{b-a}{2*2^k} = \frac{b-a}{2^{k+1}}$. \\ Thus, $a_n = \frac{b-a}{2^n} \forall n \in \mathbb{N}$.} Thus, $a_n = \frac{b - a}{2^{n-1}} \rightarrow 0$.
+% for arbitrary $\tilde{n} \in \mathbb{N}$ we have $a_{\tilde{n}} = u_{\tilde{n}} - l_{\tilde{n}} = 2 (u_{\tilde{n}+1} - l_{\tilde{n} + 1}) = 2a_{\tilde{n}}$.\footnote{Should we prove this by induction?} Thus, $a_n = \frac{b - a}{2^{n-1}} \rightarrow 0$.
+
+\subsection{Define the common limit of two sequences $c$ and show that $f(c) = 0$.}
+\underline{pf} Since $\{ u_n\}, \{ l_n\}$ converge, define $u,l \in \mathbb{R}$ s.t. $u_n \rightarrow u$ and $l_n \rightarrow l$. Since by construction $f(u_n) \geq 0 \geq f(l_n)$ $\forall n \in \mathbb{N}$, since $f$ is continuous and limits preserve weak inequalities $f(u) \geq 0 \geq f(l)$. Since we also know that $a_n \rightarrow 0$, $(u_n - l_n) \rightarrow 0$ so $u - l = 0 \Rightarrow u = l$. Thus, $f(u) \geq 0 \geq f(l) = f(u) \Rightarrow f(u) = f(l) = 0.$
+
+\section{Question 5}
+Prove that at any time there are two antipodal points on Earth that share the same temperature.
+
+I will take as given that temperature is a continuous, natural phenomenon.
+
+\underline{pf} Take any great circle of the Earth, $C$. Starting at any point $c \in C$ we can define $t(x)$ as the temperature on the Earth at point $\tilde{x} \in C$, where $x$ is the angle in radians between $\tilde{x}$ and $c$. We then define $T(x) = t(x) - t(x+\pi).$ Since $t(x)$ is continuous, $T(x)$ is continuous.\footnote{Here I will prove that the difference of two continuous functions is continuous. \\ Let $f(x),g(x): \mathbb{R} \rightarrow \mathbb{R}$, and let $h(x): = f(x) - g(x)$. Let $x_{0} \in \mathbb{R}$ and $\epsilon > 0$ be arbitrary. Since $f,g$ are continuous, $\exists \delta_f, delta_g$ s.t. $\forall x \in \mathbb{R}$ where $|x-x_0|<\delta_f$ then $|f(x)-f(x_0)|<\frac{\epsilon}{2}$ and s.t. $\forall x \in \mathbb{R}$ where $|x-x_0<\delta_g|$ then $|g(x)-g(x_0)|<\frac{\epsilon}{2}$. Define $d:= \min \{ d_f,d_g\}$. Then for $|x - x_0| < d$, $|h_x - h_{x_0}| = |f_x - g_x  - f_{x_0} + g_{x_0}| \leq |f(x) - f(x_0)|+|g(x) - g(x_0)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. Thus, $h(x)$ is continuous.}
+
+We then have 3 possible cases:
+\begin{enumerate}
+\item
+$T(0) = 0$. Then $0 = t(0)-t(\pi) \Rightarrow t(0) = t(\pi)$.
+\item
+$T(0) < 0$. Then $0> t(0) - t(\pi) \Rightarrow 0 < t(\pi) - t(0) \Rightarrow T(\pi) >0$.
+\item
+$T(0) > 0$. Then $0<t(0) - t(\pi) \Rightarrow 0> t(\pi) - t(0) \Rightarrow T(\pi) <0$.
+\end{enumerate}
+Clearly in case (1) point $c$ has an antipodal point of the same temperature. In cases (2) and (3), since $T(x)$ is continuous on $[0,\pi]$, by the intermediate value theorem $\exists k \in (0,\pi)$ s.t. $T(k) = 0 \Rightarrow t(k) - t(k+\pi) = 0 \Rightarrow t(k) = t(k+\pi)$. Thus, there exists some point $\tilde{k} \in C$, $k$ radians from $c$, which has an antipodal point of the same temperature.
+\end{document}

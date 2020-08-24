@@ -1,0 +1,148 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{amssymb}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{HW1}
+\author{Michael B. Nattinger\footnote{I worked on this assignment with my study group: Alex von Hafften, Andrew Smith, Ryan Mather, and Tyler Welch. I have also discussed problem(s) with Emily Case, Sarah Bass, and Danny Edgel.}}
+
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+Prove that if $n$ straight lines divide the plane into segments, then it is possible to paint those segments in 2 colors such that all adjacent sections have different colors.
+
+
+\underline{pf} We begin with no lines, trivially the entire space can be filled with a single color. Adding one line clearly one side is one color and the other side of the line is the second color. If we can properly\footnote{In the sense of coloring such that all adjacent sections have different colors.} color the segments formed by $k$ lines then we can add an extra line, making our total number of lines equal to $k+1$ lines, and then swap the colors on one side of our new line. We then have created a 2-coloring of the segments formed by $k+1$ lines such that all adjacent segments have different colors.\footnote{Our coloring rules were satisfied across all boundaries other than the newest line prior to adding it, so by adding the new line and flipping all of the colors on one side of the line we still satisfy the proper coloring across all old boundaries, and the new boundary is properly colored on either side as we swap colors across it.} Thus, by induction it must be the case that we can paint segments created by $n$ straight lines in 2 colors such that all adjacent sections have different colors.  
+
+\section{Question 2}
+Suppose that $a_1 = 1$ and $a_{n+1} = 2a_n + 1 $ for any $n \geq 1 $.
+
+$a_2 = 2a_1 +1 = 3$, $a_3 = 2a_2 +1 = 7$.
+
+I will prove that $a_n = 2^n -1$.
+
+\underline{pf} $a_1 = 1 = 2^1 - 1$.
+
+Assume $a_k = 2^k - 1 $ for some $k \geq 1$. Then, $a_{k+1} = 2a_k +1 = 2\left(2^k - 1\right) +1$
+
+$ = 2^{k+1} - 2 +1 = 2^{k+1} - 1$. Thus, by induction, $a_n = 2^n - 1$.
+
+\section{Question 3}
+Prove $\left(A \cup B \right) ^c = A^c \cap B^c$.
+
+\underline{pf} Let $a \in \left( A\cup B \right)^c$. Assume $a \in A$. Then $a \in A\cup B \Rightarrow a \notin \left( A\cup B \right)^c$. This is a contradiction so clearly $a \notin A \Rightarrow a \in A^c$. By the same logic $a \in B^c \Rightarrow a \in A^c \cap B^c$. Thus, $(A \cup B )^c \subseteq  A^c \cap B^c$.
+
+Let $b \in A^c \cap B^c$. Then $b \in A^c$ and $b \in B^c$. Assume $b \notin (A \cup B )^c$. Then $b \in (A \cup B )$ so either $b \in A$ or $b \in B$ (or, trivially, both). In any of these cases it is obvious that we have a contradiction as either $b \notin A^c$ or $b \notin B^c$ (or both). Thus $b \in (A \cup B)^c$. Thus, $A^c \cap B^c \subseteq (A \cup B )^c $. So, $\left(A \cup B \right) ^c = A^c \cap B^c$.
+
+\section{Question 4}
+Let $A = \{ 2k + 1 | k \in \mathbb{Z} \} $, $B = \{ 3k | k \in \mathbb{Z} \}$.
+\subsection{Prove $A \cap B = \{ 2(3k+1) + 1  | k \in \mathbb{Z}  \} := C $}
+\underline{pf} Let $a \in C$. Then $\exists k \in \mathbb{Z}$ s.t. $ a = 2(3k+1) +1$. $3k+1$ is an integer so $a \in A $, as $a$ is of the form of $2 \hat{k}+1$, with $\hat{k} = 3k+1$. Also, $a = 6k + 3 = 3(2k+1)$ so $a \in B$ as $a$ is of the form of $3 \tilde{k}$, with $\tilde{k} = 2k+1$. Thus $a \in A \cap B $ so $C \subseteq A \cap B $.
+
+Let $ a \in A \cap B$. Then $\exists i,j \in \mathbb{Z}$ s.t. $a = 2i+1$ and $a = 3j$. Then $a$ is odd so $j$ must be odd, as if $j$ were even then $a = 3j$ would be even (a contradiction), so $\exists k \in \mathbb{Z}$ s.t. $a = 3j = 3(2k+1) = 6k +3 = 2(3k+1)+1$ so $a \in C \Rightarrow A \cap B \subseteq C \Rightarrow A \cap B = C.$
+
+\subsection{ Prove $B \setminus A = \{ 3(2k)  | k \in \mathbb{Z} \} := D$ }
+\underline{pf} Let $b \in D$. Then $\exists k \in \mathbb{Z}$ s.t. $3(2k) = b$. Clearly $b \in B$, and since $b = 2(3k)$, $b$ is even. All elements of $A$ are odd so $b \notin A \Rightarrow b \in B \setminus A \Rightarrow D \subseteq B\setminus A$. 
+
+Let $ b \in B \setminus A$. Since $b \notin A$, b is even so $\exists i \in \mathbb{Z}$ s.t. $ b = 2i$ and since $b \in B$ $ \exists j \in \mathbb{Z}$ s.t. $ b = 3j$. Since $b$ is a multiple of both $2$ and $3$ then we must be able to find $k \in \mathbb{Z}$ s.t. $b = 3(2k) \Rightarrow b \in D \Rightarrow B \setminus A \subseteq D \Rightarrow B \setminus A = D.$
+
+\section{Question 5}
+Prove that the following are metric spaces:
+\subsection{$d_1(x,y) = \sum_{k=1}^{n} |x_k - y_k| $, where $x = (x_1,\dots ,x_n)$, $y = (y_1,\dots ,y_n).$}
+\begin{itemize}
+\item
+Owing to the absolute value within the summation, $d_1(x,y) \geq 0$. $d_1 = 0 \Rightarrow x_k = y_k \forall k \Rightarrow x = y$, and $d_1 \neq 0 \Rightarrow \exists k$ s.t. $x_k \neq y_k \Rightarrow x \neq y$. Thus, $d_1(x,y) = 0 \iff x = y$. 
+\item
+$d_1(x,y) =  \sum_{k=1}^{n} |x_k - y_k|  =  \sum_{k=1}^{n} |y_k - x_k| = d_1(y,x)$.
+\item
+ $d_1(x,y) + d_1(y,z) =  \sum_{k=1}^{n} |x_k - y_k|+  \sum_{k=1}^{n} |y_k - z_k| = \sum_{k=1}^{n} |x_k - y_k|+ |y_k - z_k| \geq \sum_{k=1}^{n} |x_k - z_k| = d_1(x,z)$ by the triangle inequality for absolute value for each $k \in \{ 1 \dots n \}$.\footnote{Proof that elementwise triangle inequality implies triangle inequality of the summation of elements follows the same form as the footnote below, which proves this for $max$ rather than sum.}
+\end{itemize}
+Therefore, $d_1(x,y)$ is a metric.
+
+\subsection{$d_\infty (x,y) = \max\limits_{1 \leq k \leq n} |x_k - y_k |$, where $x = (x_1,\dots ,x_n)$, $y = (y_1,\dots ,y_n).$}
+\begin{itemize}
+\item
+Owing to the absolute value within the maximum, $d_\infty(x,y) \geq 0$.  $d_\infty(x,y) = 0 \Rightarrow x_k = y_k \forall k \Rightarrow x = y$, and $d_\infty(x,y) \neq 0 \Rightarrow \exists k$ s.t. $x_k \neq y_k \Rightarrow x \neq y$. Thus, $d_\infty(x,y) = 0 \iff x = y$. 
+\item
+$d_\infty(x,y) = \max\limits_{1 \leq k \leq n} |x_k - y_k | = \max\limits_{1 \leq k \leq n} |y_k - x_k | = d_\infty(y,x)$. 
+\item
+ $d_\infty(x,y) + d_\infty(y,z) =   \max\limits_{1 \leq k \leq n} |x_k - y_k |+ \max\limits_{1 \leq k \leq n} |y_k - z_k | \geq  \max\limits_{1 \leq k \leq n}  |x_k - y_k |+  |y_k - z_k | \geq  \max\limits_{1 \leq k \leq n} |x_k - z_k | = d_\infty(x,z) $ by the triangle inequality for absolute value for each $k \in \{ 1 \dots n \}.$\footnote{Let $A = \{a_1,\dots ,a_n \}$, $B = \{b_1,\dots ,b_n \}$ with $a_k\geq b_k \forall k \in \{ 1 \dots n\}.$ Assume $\max\limits_{1 \leq k \leq n} a_k < \max\limits_{1 \leq k \leq n} b_k$. Then $\exists i \in \{ 1 \dots n \}$ s.t. $a_i < b_i$ which is a contradiction, so $\max\limits_{1 \leq k \leq n} a_k \geq \max\limits_{1 \leq k \leq n} b_k$. A similar logic applies to the sums in the third bullet of 5.1.}
+\end{itemize}
+Therefore, $d_\infty(x,y)$ is a metric.
+\section{Question 6}
+Let $\lim\limits_{n \rightarrow \infty} x_n = x$ and $\lim\limits_{n \rightarrow \infty} y_n = y$ in a metric space (X,d). We will show that $\lim\limits_{n \rightarrow \infty} d(x_n,y_n) = d(x,y)$.
+
+\underline{pf} Let $\epsilon>0$ be arbitrary. By definition of convergence,  $\exists N_x,N_y$ s.t. $d(x_n,x)<\frac{\epsilon}{2}$ $\forall n>N_x$ and $d(y_n,y)<\frac{\epsilon}{2}$ $\forall n>N_y$. We define $N = max \{ N_x,N_y \}$. By repeatedly applying the triangle inequality\footnote{This follows directly from several iterations of the triangle inequality but also requires some non-trivial reasoning which I will derive below: \\ First, assume $d(x_n,y_n) \geq d(x,y).$
+By repeatedly appealing to the triangle inequality, 
+\begin{equation}
+d(x_n,y) \leq d(x_n,x) + d(x,y)
+\end{equation}
+\begin{equation}
+d(x_n,y_n) \leq d(x_n,y) + d(y,y_n) \leq d(x_n,x) + d(x,y) + d(y,y_n).
+\end{equation}
+Subtracting $d(x,y)$ from both sides,
+\begin{equation}
+|d(x_n,y_n) - d(x,y)| = d(x_n,y_n) - d(x,y) \leq d(x_n,x) + d(y,y_n) = |d(x_n,x) + d(y,y_n)|.
+\end{equation}
+So, under our assumption that $d(x_n,y_n) \geq d(x,y)$, $|d(x_n,y_n) - d(x,y)| \leq |d(x_n,x) + d(y,y_n)|$. By swapping $x_n \iff x$ and $y_n \iff y$ the same reasoning holds for $d(x_n,y_n) \leq d(x,y)$. Thus, for all possible cases, $|d(x_n,y_n) - d(x,y)| \leq |d(x_n,x) + d(y,y_n)|$.
+}, $|d(x_n,y_n) - d(x,y)| \leq |d(x_n,x)+ d(y_n,y)| = d(x_n,x)+ d(y_n,y) < \frac{\epsilon}{2} +  \frac{\epsilon}{2} = \epsilon$ $ \forall n>N$. Thus $\lim\limits_{n \rightarrow \infty} d(x_n,y_n) = d(x,y).$
+
+\section{Question 7}
+Let $\{ x_n\},$ $\{ y_n\},$ $\{ z_n\}$ be sequences with $x_n \rightarrow A$, $z_n \rightarrow A$, and for any n, $x_n\leq y_n \leq z_n$. We will prove that $y_n \rightarrow A$.
+
+\underline{pf} Let $\epsilon > 0$ be arbitrary. Since $x_n$ and $z_n$ converge, $\exists N_x,N_z$ s.t. $|x_n - A|<\epsilon$ $\forall n>N_x$ and  $|z_n - A|<\epsilon$ $\forall n>N_z$. Taking $N$ to be $max\{ N_x, N_z\}$, we have that $A-\epsilon< x_n \leq y_n \leq z_n  <A+\epsilon$ $\forall n>N$ so $|y_n - A|<\epsilon$ $\forall n>N$. Thus, $y_n \rightarrow A$. 
+\end{document}
