@@ -62,20 +62,24 @@
 \section{Question 1}
 Let $(X, d)$ be a nonempty complete metric space. Define $T: X \rightarrow X$ such that $d(T(x),T(y))<d(x,y)$ $\forall x \neq y, x,y \in X.$ We will prove that $T$ has a fixed point.
 
-\underline{pf} Contraction mapping theorem. Sketch: $\exists \beta <1$ such that $d(T(x),T(y))\leq \beta d(x,y)<d(x,y)$ $\forall x \neq y, x,y \in X.$ Then T has a unique fixed point $x^*$ by the contraction mapping theorem.
+\underline{pf} Let $x_0 \in X$ be arbitrary. We will then define $\{ x_n\}$ s.t. $x_n = T(x_{n-1})$ $\forall x \in \mathbb{N}.$ Then $d(x_{n+1},x_{n}) = d(T(x_{n}),T(x_{n-1})) < d(x_{n},x_{n-1})$ $\forall n \in \mathbb{N}$. So, by the monotone convergence theorem, $\{ a_n \}$ defined as $a_n = d(x_n,x_{n-1})$ converges to its infimum. Its infimum is 0.\footnote{How do I prove this?} Thus, for $\epsilon > 0$ we can find $N \in \mathbb{N}$ such that $\forall n>N,$ $|d(x_n,x_{n-1}) - 0| = d(x_n,x_{n-1})<\epsilon$ so $\{ x_n\}$ is Cauchy. Since X is complete, we conclude that $\{ x_n\}$ converges to some limit and define $\lim\limits_{n \rightarrow \infty}x_n = x$. Then, note $T(x) = T(\lim\limits_{n \rightarrow \infty} x_n) = \lim\limits_{n \rightarrow \infty} T(x_n) = \lim\limits_{n \rightarrow \infty} x_{n+1} = x$.\footnote{This holds because T is continuous which I will prove here: \\ Let $x \in X$ be arbitrary. Let $\epsilon >0.$ Then for $\delta = \epsilon$, $|T(x) - T(y)| < |x - y|$ $\forall y \in \mathbb{R}$ such that $|x-y|<\delta$. Thus, $T$ is continuous.} Thus, $x$ is a fixed point of $T$.
+
+Assume for the purpose of contradiction that $\exists y \in X \setminus \{x \}$ s.t. $y$ is a fixed point. Then $d(T(x),T(y)) < d(x,y)$ since $x\neq y$. However, $T(x) = x$ and, by assumption, $T(y) = y$, so $d(T(x),T(y)) = d(x,y)$, a contradiction. Thus, $x$ is the unique fixed point of $T$.
+
+%Outline:  Manipulate $d(T(x),T(y))<d(x,y)$ and show it is continuous on X. Then X is closed so we can apply EVT and get a $\beta$ that we can use in the central mapping theorem.
+%
+%Define $f(x,y) = d(x,y) - d(T(x),d(T(y)).$ 
+
+% Since $d(T(x),T(y))<d(x,y)$ $\forall x \neq y, x,y \in X,$ $\exists \beta <1$ such that $d(T(x),T(y))\leq \beta d(x,y)<d(x,y)$ $\forall x \neq y, x,y \in X.$ Then T has a unique fixed point $x^*$ by the contraction mapping theorem.
 
 \section{Question 2}
-We will show that the following countable set is compact in $\mathbb{R}$: $A:= \{ \frac{1}{n}: n \in \mathbb{N}\} \cup \{ 0 \}$.
-%\begin{equation*}
-%S = \{x + y | x,y \in H\}
-%\end{equation*}
-%where $H:= \{ \frac{1}{n}: n \in \mathbb{N}\} \cup \{ 0 \}$.
+We will show that the following countable set, $A$, is compact in $\mathbb{R}$: $A:= \{ \frac{1}{n}: n \in \mathbb{N}\} \cup \{ 0 \}$.
 
 \underline{pf} We can map each element of $A$ to an element of $\mathbb{N}$. We can do so by mapping 0 to 1, and by mapping $\frac{1}{n}$ to $n+1$ for $n \in \mathbb{N}, n>1.$ Thus $A$ is countable. Additionally $A$ is bounded below by its smallest element, 0, and above by its largest element, 1. So $A$ is bounded.
 
 We will now prove that $A$ is closed. Let $\{ a_n \}$ be a convergent subsequence, with $a_n \in A$ $\forall n \in \mathbb{N}$. Let $\lim\limits_{n\rightarrow \infty} a_n = a$. Assume for purpose of contradiction that $a \notin A$. We then have three possible cases:
 \begin{enumerate}
-\item Case 1: $a<0$. By the definition of convergence, for $\epsilon = \frac{a}{2}$, $\exists N \in \mathbb{N}$ s.t. $\forall n>N,$ $|a_n - a|<\epsilon.$ However, all elements of $A$ are nonnegative, and the convergence of $\{a_n\}$ implies the existence of an element of $A$, $a_{n^*}$, s.t. $a_{n^*}\leq \frac{a}{2}<0$, a contradiction.
+\item Case 1: $a<0$. By the definition of convergence, for $\epsilon = \frac{a}{2}$, $\exists N \in \mathbb{N}$ s.t. $\forall n>N,$ $|a_n - a|<\epsilon.$ However, all elements of $A$ are nonnegative, and the convergence of $\{a_n\}$ implies the existence of an element of $A$, $a_{n^*}$, s.t. $a_{n^*}< \frac{a}{2}<0$, a contradiction.
 \item Case 2: $a>1$.  By the definition of convergence, for $\epsilon = \frac{a-1}{2}$, $\exists N \in \mathbb{N}$ s.t. $\forall n>N$, $|a_n - a|<\epsilon.$ Note however that $\max A =1$, and the convergence of $\{a_n\}$ implies the existence of an element of $A$, $a_{n^*}$, s.t. $1<a-\epsilon<a_{n^*}$, a contradiction.
 \item Case 3: $a \in [0,1]\setminus A$. Then we can find $n^*:= \argmin\limits_{n \in \mathbb{N}} |a - \frac{1}{n}|$. We can then define $\epsilon = \frac{|a - \frac{1}{n^*}|}{2}$, and by the definition of convergence $\exists N \in \mathbb{N}$ s.t. $\forall n>N,$ $|a_n - a|<\epsilon$.\footnote{Since $a \in [0,1] \setminus A$, and 0 is in A, the closest element of A to a must be nonzero as $a>0$ so we can always find some sufficiently large $n\in \mathbb{N}$ with $0<\frac{1}{n}\leq a$. Since we have defined this epsilon ball such that it is closer to $a$ than the closest element of $A$ is to $a$, 0 cannot be the $a_n \in A$ that satisfies this inequality.} So, for some $\tilde{n} \in \mathbb{N}, |\frac{1}{\tilde{n}} -a|<\epsilon$, yet by construction $|a_{n^*} - a|>\frac{|a - \frac{1}{n^*}|}{2}=\epsilon$. This implies that $|a - \frac{1}{n^*}| = \min\limits_{n \in \mathbb{N}} |a - \frac{1}{n}| > |a - \frac{1}{\tilde{n}}|$, which is a contradiction. %Then $\frac{1}{n} \in A$
 \end{enumerate}
@@ -89,14 +93,15 @@ Thus, as all possible cases lead to contradictions, $a \in A$ so $A$ is closed. 
 \section{Question 3}
 Prove that the function $f(x) = \cos^2 (x)e^{5-x-x^2}$ has a maximum on $\mathbb{R}$.
 
-\underline{pf} Maybe an extention of the extended case of the intermediate value theorem?
+\underline{pf} Let $g(x):= \cos^2(x)$, $h(x):= e^{5-x-x^2}$. Thus $f(x) = g(x)h(x)$ $\forall x \in \mathbb{R}.$ $\cos$ and exp are continuous functions so $f(x),g(x),h(x)$ are all continuous on $\mathbb{R}$. Note that $0\leq g(x) \leq 1$ $\forall n \in \mathbb{N}.$ Note also that $0<h(x) \Rightarrow 0 \leq f(x) $ $\forall x \in \mathbb{R}$. Furthermore, for $x \in (-\infty,-3) \cup (3,\infty)$, $h(x) < 1 \Rightarrow f(x) \leq 1$.\footnote{For $x \in (-\infty,-3) \cup (3,\infty),$ $5-x-x^2<0 \Rightarrow e^{5 - x - x^2} = h(x) < 1.$ Assume for the purpose of contradiction that $f(x^*)>1$ for some $x^* \in (-\infty,-3) \cup (3,\infty).$ This implies $g(x^*)h(x^*) > 1$, so either $g(x^*)>1$ or $h(x^*) >1.$ In either case we have a contradiction so $f(x)\leq1$ $\forall x \in (-\infty,-3) \cup (3,\infty).$} Notice that $f(0) = \cos^2(0)e^{5 - 0 - 0^2} = (1)(e^5) > 1$. Notice also that $[-3,3]$ is compact in $\mathbb{R}$ by the Heine-Borel theorem, so by the extreme value theorem $\exists k \in [-3,3]$ s.t. $f(k) \geq f(x)$ $\forall x \in [-3,3]$. Therefore, $f(k) \geq f(0) > 1 \geq f(x)$ $\forall x \in (-\infty,-3) \cup (3,\infty)$, so $f(k) \geq f(x)$ $\forall x \in \mathbb{R}.$
 
+% Maybe an extention of the extended case of the extreme value theorem?
+%$f(x):=\cos^2(x)$ is continuous and bounded by 0 and 1, and $g(x):=e^{5 - x - x^2}$ is continuous so it is sufficient to show that it  bounded by 0 and some upper bound M, as then their product must be bound by 0 and $M$.\footnote{Let $f(x),g(x): I \rightarrow \mathbb{R}$ be continuous functions, with $f(x)$ bounded by 0 and 1 and $g(x)$ bounded by 0 and $M$, and with $I \subseteq \mathbb{R}$ a closed interval. Then let $h(x):=$ $f(x)g(x)$. Assume $h(x)$ is not bounded below by 0. Then $\exists x \in I$ s.t. $f(x)g(x)<0$ which implies that either $f(x)<0$ or $g(x)<0$, either of which is a contradiction. Assume that $h(x)$ is not bounded above by $M$. This implies that $\exists x \in I$ s.t. $f(x)g(x) > M$, so either $f(x)>1$ or $g(x)>M$, either of which is a contradiction. So, $h(x)$ is bounded by 0 and $M$.} Note that $f(x)$ is increasing on $(-\infty,-1)$ and decreasing on $(0,\infty)$,\footnote{prove inc, dec here}. Note that $[-1,0]$ is compact on $\mathbb{R}$ by the Heine-Borel theorem. Then, by the extreme value theorem, $g(x)$ achieves its maximum for some  on $[-1,0]$ and is thus bounded above by some $M \geq 0$. Therefore, $h(x)$ is bounded above by $M$ and below by $0$, and this   %Show e^(...) is decreasing below a certain point and increasing above a certain point so we can just use 
 
 \section{Question 4}
 Suppose you have two maps of Wisconsin, one large and one small. We put the large one on top of the small one so that the small map is completely covered by the large one. Prove that a point on the small map is in the same location as it is on the large map.
 
-\underline{pf} Definitely the contraction mapping theorem.
-
+\underline{pf} Let the large (flat) map of Wisconsin = $W$ be a closed subset of $\mathbb{R}^2$. Since $\mathbb{R}^2$ is complete and $W$ is closed, $W$ is complete. We then have a strictly smaller map of Wisconsin, laid on top of the large map such that it is completely covered by the large map, and so we can define a mapping operator $T: W \rightarrow W$ s.t., for point $x \in W$, a point on the big map, $T(x)$ corresponds to the location on the big map on which the small map corresponds to the same geographical position as x. Since by assumption the small map is smaller than the large map, $\exists \beta <1$ such that $\forall x,y \in W$ we have $\beta d(x,y)\geq d(T(x),T(y)).$ Then $T$ is a contraction of modulus $\beta$, so by the contraction mapping theorem $T$ has a fixed point $x^*$ where $x^* = T(x^*)$ so at $x^*$ the big map and small map correspond to the same location in Wisconsin.
 
 \section{Question 5}
 Consider the set $X = \{ -1, 0, 1 \}$ and the space of all functions on $X$, $F_X = \{ f: X \rightarrow \mathbb{R} \}$.
