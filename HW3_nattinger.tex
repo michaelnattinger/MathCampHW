@@ -15,6 +15,7 @@
 \usepackage{graphicx} % support the \includegraphics command and options
 
 \usepackage{amssymb}
+\usepackage{amsmath}
 %%% PACKAGES
 \usepackage{booktabs} % for much better looking tables
 \usepackage{array} % for better arrays (eg matrices) in maths
@@ -41,6 +42,10 @@
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 %%% END Article customizations
 
 %%% The "real" document content comes below...
@@ -55,13 +60,60 @@
 \maketitle
 
 \section{Question 1}
+Let $(X, d)$ be a nonempty complete metric space. Define $T: X \rightarrow X$ such that $d(T(x),T(y))<d(x,y)$ $\forall x \neq y, x,y \in X.$ We will prove that $T$ has a fixed point.
+
+\underline{pf} Contraction mapping theorem. Sketch: $\exists \beta <1$ such that $d(T(x),T(y))\leq \beta d(x,y)<d(x,y)$ $\forall x \neq y, x,y \in X.$ Then T has a unique fixed point $x^*$ by the contraction mapping theorem.
 
 \section{Question 2}
+We will show that the following countable set is compact in $\mathbb{R}$: $A:= \{ \frac{1}{n}: n \in \mathbb{N}\} \cup \{ 0 \}$.
+%\begin{equation*}
+%S = \{x + y | x,y \in H\}
+%\end{equation*}
+%where $H:= \{ \frac{1}{n}: n \in \mathbb{N}\} \cup \{ 0 \}$.
+
+\underline{pf} We can map each element of $A$ to an element of $\mathbb{N}$. We can do so by mapping 0 to 1, and by mapping $\frac{1}{n}$ to $n+1$ for $n \in \mathbb{N}, n>1.$ Thus $A$ is countable. Additionally $A$ is bounded below by its smallest element, 0, and above by its largest element, 1. So $A$ is bounded.
+
+We will now prove that $A$ is closed. Let $\{ a_n \}$ be a convergent subsequence, with $a_n \in A$ $\forall n \in \mathbb{N}$. Let $\lim\limits_{n\rightarrow \infty} a_n = a$. Assume for purpose of contradiction that $a \notin A$. We then have three possible cases:
+\begin{enumerate}
+\item Case 1: $a<0$. By the definition of convergence, for $\epsilon = \frac{a}{2}$, $\exists N \in \mathbb{N}$ s.t. $\forall n>N,$ $|a_n - a|<\epsilon.$ However, all elements of $A$ are nonnegative, and the convergence of $\{a_n\}$ implies the existence of an element of $A$, $a_{n^*}$, s.t. $a_{n^*}\leq \frac{a}{2}<0$, a contradiction.
+\item Case 2: $a>1$.  By the definition of convergence, for $\epsilon = \frac{a-1}{2}$, $\exists N \in \mathbb{N}$ s.t. $\forall n>N$, $|a_n - a|<\epsilon.$ Note however that $\max A =1$, and the convergence of $\{a_n\}$ implies the existence of an element of $A$, $a_{n^*}$, s.t. $1<a-\epsilon<a_{n^*}$, a contradiction.
+\item Case 3: $a \in [0,1]\setminus A$. Then we can find $n^*:= \argmin\limits_{n \in \mathbb{N}} |a - \frac{1}{n}|$. We can then define $\epsilon = \frac{|a - \frac{1}{n^*}|}{2}$, and by the definition of convergence $\exists N \in \mathbb{N}$ s.t. $\forall n>N,$ $|a_n - a|<\epsilon$.\footnote{Since $a \in [0,1] \setminus A$, and 0 is in A, the closest element of A to a must be nonzero as $a>0$ so we can always find some sufficiently large $n\in \mathbb{N}$ with $0<\frac{1}{n}\leq a$. Since we have defined this epsilon ball such that it is closer to $a$ than the closest element of $A$ is to $a$, 0 cannot be the $a_n \in A$ that satisfies this inequality.} So, for some $\tilde{n} \in \mathbb{N}, |\frac{1}{\tilde{n}} -a|<\epsilon$, yet by construction $|a_{n^*} - a|>\frac{|a - \frac{1}{n^*}|}{2}=\epsilon$. This implies that $|a - \frac{1}{n^*}| = \min\limits_{n \in \mathbb{N}} |a - \frac{1}{n}| > |a - \frac{1}{\tilde{n}}|$, which is a contradiction. %Then $\frac{1}{n} \in A$
+\end{enumerate}
+Thus, as all possible cases lead to contradictions, $a \in A$ so $A$ is closed. Since $A$ is closed and bounded it is compact, and as we showed earlier $A$ is countable so $A$ is an example of a countable set that is compact in $\mathbb{R}$.
+%Notice that the smallest element of $S$ is $0+0=0$ and the largest element is $1+1 = 2$. Thus, S is bounded. Now we just need that it is closed.
+%
+%Show that each element of $H$ is a limit point of S. (ERGO IT CONTAINS ALL ITS LIMIT POINTS)
+%
+%S is closed because it is the sum of two countable subsets of $\mathbb{R}$ and is therefore closed in $\mathbb{R}$, and is therefore compact because it is a closed and bounded subset of $\mathbb{R}$.
 
 \section{Question 3}
+Prove that the function $f(x) = \cos^2 (x)e^{5-x-x^2}$ has a maximum on $\mathbb{R}$.
+
+\underline{pf} Maybe an extention of the extended case of the intermediate value theorem?
+
 
 \section{Question 4}
+Suppose you have two maps of Wisconsin, one large and one small. We put the large one on top of the small one so that the small map is completely covered by the large one. Prove that a point on the small map is in the same location as it is on the large map.
+
+\underline{pf} Definitely the contraction mapping theorem.
+
 
 \section{Question 5}
+Consider the set $X = \{ -1, 0, 1 \}$ and the space of all functions on $X$, $F_X = \{ f: X \rightarrow \mathbb{R} \}$.
 
+\subsection{Show that $F_X$ is a vector space.}
+\subsection{Show that the operator $T: F_X \rightarrow F_X$ defined by $T(f)(x) = f(x^2), x \in \{ -1,0,1\}$ is linear.}
+\subsection{Calculate kern $T$, Im $T$, and rank $T$.}
+\section{Question 6}
+Consider the following system of linear equations:
+\begin{equation}
+\begin{cases}
+0=& x_1 + x_2 + 2x_3 + x_4, \\
+0=&3x_1 - x_2 + x_3 - x_4, \\
+0=&5x_1 - 3x_2 - 3x_4. \label{eqn:linsys}
+\end{cases}
+\end{equation}
+Let $X$ be the set of $\{ x_1,x_2,x_3,x_4 \}$ which satisfy (\ref{eqn:linsys}).
+\subsection{Show that $X$ is a vector space.}
+\subsection{Calculate dim $X$.}
 \end{document}
