@@ -46,6 +46,23 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
 %%% END Article customizations
 
 %%% The "real" document content comes below...
@@ -62,9 +79,9 @@
 \section{Question 1}
 Let $(X, d)$ be a nonempty complete metric space. Define $T: X \rightarrow X$ such that $d(T(x),T(y))<d(x,y)$ $\forall x \neq y, x,y \in X.$ I will prove by counterexample that it is not necessarily the case that $T$ has a fixed point.
 
-\underline{pf} Consider $(\mathbb{R}^{+},d)$ with $d(x,y) = |x-y|$. Define $T: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$ as $T(x) = \sqrt{x^2 + 1}$. Let $x,y \in \mathbb{R}^{+}$ such that $x \neq y$. Then $d(T(x),T(y)) = |\sqrt{x^2 + 1} - \sqrt{y^2 +1}| < |\sqrt{x^2} - \sqrt{y^2}| = |x - y| = d(x,y)$.\footnote{ $ |\sqrt{x^2 + 1} - \sqrt{y^2 +1}| = \frac{|x^2 + y^2|}{|\sqrt{x^2 + 1} + \sqrt{y^2 +1}|}  = |\sqrt{x^2} - \sqrt{y^2}| \frac{|\sqrt{x^2} + \sqrt{y^2}|}{|\sqrt{x^2 + 1} + \sqrt{y^2 + 1}|} \leq |\sqrt{x^2} - \sqrt{y^2}|$, with equality iff $x=y=0.$ However, $x \neq y,$ so $|\sqrt{x^2 + 1} - \sqrt{y^2 +1}| < |\sqrt{x^2} - \sqrt{y^2}|$. } Furthermore, $\mathbb{R}^{+} \subset \mathbb{R}$ is complete as it is closed and $\mathbb{R}$ is complete. We will show that $T$ has no fixed points.
+\underline{pf} Consider $(\mathbb{R}^{+},d)$ with $d(x,y) = |x-y|$. Define $T: \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$ as $T(x) = \sqrt{x^2 + 1}$. Let $x,y \in \mathbb{R}^{+}$ such that $x \neq y$. Then $d(T(x),T(y)) = |\sqrt{x^2 + 1} - \sqrt{y^2 +1}| < |\sqrt{x^2} - \sqrt{y^2}| = |x - y| = d(x,y)$.\footnote{ $ |\sqrt{x^2 + 1} - \sqrt{y^2 +1}| = \frac{|x^2 + y^2|}{|\sqrt{x^2 + 1} + \sqrt{y^2 +1}|}  = |\sqrt{x^2} - \sqrt{y^2}| \frac{|\sqrt{x^2} + \sqrt{y^2}|}{|\sqrt{x^2 + 1} + \sqrt{y^2 + 1}|} \leq |\sqrt{x^2} - \sqrt{y^2}|$, with equality iff $x=y=0.$ However, $x \neq y,$ so $|\sqrt{x^2 + 1} - \sqrt{y^2 +1}| < |\sqrt{x^2} - \sqrt{y^2}|$. } Furthermore, $\mathbb{R}^{+} \subset \mathbb{R}$ is complete as $\mathbb{R}^{+}$ is closed and $\mathbb{R}$ is complete. We will show that $T$ has no fixed points.
 
-Assume for the purpose of contradiction that $T$ has a fixed point, $x^*$. Then $x^* = T(x^*) = \sqrt{(x^*)^2 + 1} > \sqrt{(x^*)^2} = x^*$, so $x^* > x^*$, which is a contradiction. So, $T$ has no fixed points.
+Assume for the purpose of contradiction that $T$ has a fixed point, $x^* \in \mathbb{R}^{+}$. Then $x^* = T(x^*) = \sqrt{(x^*)^2 + 1} > \sqrt{(x^*)^2} = x^*$, so $x^* > x^*$, which is a contradiction. So, $T$ has no fixed points.
 
 % Let $x_0 \in X$ be arbitrary. We will then define $\{ x_n\}$ s.t. $x_n = T(x_{n-1})$ $\forall x \in \mathbb{N}.$ Then $d(x_{n+1},x_{n}) = d(T(x_{n}),T(x_{n-1})) < d(x_{n},x_{n-1})$ $\forall n \in \mathbb{N}$. So, by the monotone convergence theorem, $\{ a_n \}$ defined as $a_n = d(x_n,x_{n-1})$ converges to its infimum. Its infimum is 0.\footnote{How do I prove this?} Thus, for $\epsilon > 0$ we can find $N \in \mathbb{N}$ such that $\forall n>N,$ $|d(x_n,x_{n-1}) - 0| = d(x_n,x_{n-1})<\epsilon$ so $\{ x_n\}$ is Cauchy. Since X is complete, we conclude that $\{ x_n\}$ converges to some limit and define $\lim\limits_{n \rightarrow \infty}x_n = x$. Then, note $T(x) = T(\lim\limits_{n \rightarrow \infty} x_n) = \lim\limits_{n \rightarrow \infty} T(x_n) = \lim\limits_{n \rightarrow \infty} x_{n+1} = x$.\footnote{This holds because T is continuous which I will prove here: \\ Let $x \in X$ be arbitrary. Let $\epsilon >0.$ Then for $\delta = \epsilon$, $|T(x) - T(y)| < |x - y|$ $\forall y \in \mathbb{R}$ such that $|x-y|<\delta$. Thus, $T$ is continuous.} Thus, $x$ is a fixed point of $T$.
 %
@@ -101,7 +118,7 @@ Given any open cover of $A$, we know that $\exists$ an open set $S$ of the cover
 \section{Question 3}
 Prove that the function $f(x) = \cos^2 (x)e^{5-x-x^2}$ has a maximum on $\mathbb{R}$.
 
-\underline{pf} Let $g(x):= \cos^2(x)$, $h(x):= e^{5-x-x^2}$. Thus $f(x) = g(x)h(x)$ $\forall x \in \mathbb{R}.$ $\cos$ and exp are continuous functions so $f(x),g(x),h(x)$ are all continuous on $\mathbb{R}$. Note that $0\leq g(x) \leq 1$ $\forall n \in \mathbb{N}.$ Note also that $0<h(x) \Rightarrow 0 \leq f(x) $ $\forall x \in \mathbb{R}$. Furthermore, for $x \in (-\infty,-3) \cup (3,\infty)$, $h(x) < 1 \Rightarrow f(x) \leq 1$.\footnote{For $x \in (-\infty,-3) \cup (3,\infty),$ $5-x-x^2<0 \Rightarrow e^{5 - x - x^2} = h(x) < 1.$ Assume for the purpose of contradiction that $f(x^*)>1$ for some $x^* \in (-\infty,-3) \cup (3,\infty).$ This implies $g(x^*)h(x^*) > 1$, so either $g(x^*)>1$ or $h(x^*) >1.$ In either case we have a contradiction so $f(x)\leq1$ $\forall x \in (-\infty,-3) \cup (3,\infty).$} Notice that $f(0) = \cos^2(0)e^{5 - 0 - 0^2} = (1)(e^5) > 1$. Notice also that $[-3,3]$ is compact in $\mathbb{R}$ by the Heine-Borel theorem, so by the extreme value theorem $\exists k \in [-3,3]$ s.t. $f(k) \geq f(x)$ $\forall x \in [-3,3]$. Therefore, $f(k) \geq f(0) > 1 \geq f(x)$ $\forall x \in (-\infty,-3) \cup (3,\infty)$, so $f(k) \geq f(x)$ $\forall x \in \mathbb{R}.$ Thus, $f(x)$ has a maximum on $\mathbb{R}$, at $k$.
+\underline{pf} Let $g(x):= \cos^2(x)$, $h(x):= e^{5-x-x^2}$. Thus $f(x) = g(x)h(x)$ $\forall x \in \mathbb{R}.$ $\cos$ and exp are continuous functions on $\mathbb{R}$ so $f(x),g(x),h(x)$ are all continuous on $\mathbb{R}$. Note that $0\leq g(x) \leq 1$ $\forall n \in \mathbb{N}.$ Note also that $0<h(x) \Rightarrow 0 \leq f(x) $ $\forall x \in \mathbb{R}$. Furthermore, for $x \in (-\infty,-3) \cup (3,\infty)$, $h(x) < 1 \Rightarrow f(x) \leq 1$.\footnote{For $x \in (-\infty,-3) \cup (3,\infty),$ $5-x-x^2<0 \Rightarrow e^{5 - x - x^2} = h(x) < 1.$ Assume for the purpose of contradiction that $f(x^*)>1$ for some $x^* \in (-\infty,-3) \cup (3,\infty).$ This implies $g(x^*)h(x^*) > 1$, so either $g(x^*)>1$ or $h(x^*) >1.$ In either case we have a contradiction so $f(x)\leq1$ $\forall x \in (-\infty,-3) \cup (3,\infty).$} Notice that $f(0) = \cos^2(0)e^{5 - 0 - 0^2} = (1)(e^5) > 1$. Notice also that $[-3,3]$ is compact in $\mathbb{R}$ by the Heine-Borel theorem, so by the extreme value theorem $\exists k \in [-3,3]$ s.t. $f(k) \geq f(x)$ $\forall x \in [-3,3]$. Therefore, $f(k) \geq f(0) > 1 \geq f(x)$ $\forall x \in (-\infty,-3) \cup (3,\infty)$, so $f(k) \geq f(x)$ $\forall x \in \mathbb{R}.$ Thus, $f(x)$ has a maximum on $\mathbb{R}$, at $k$.
 
 % Maybe an extention of the extended case of the extreme value theorem?
 %$f(x):=\cos^2(x)$ is continuous and bounded by 0 and 1, and $g(x):=e^{5 - x - x^2}$ is continuous so it is sufficient to show that it  bounded by 0 and some upper bound M, as then their product must be bound by 0 and $M$.\footnote{Let $f(x),g(x): I \rightarrow \mathbb{R}$ be continuous functions, with $f(x)$ bounded by 0 and 1 and $g(x)$ bounded by 0 and $M$, and with $I \subseteq \mathbb{R}$ a closed interval. Then let $h(x):=$ $f(x)g(x)$. Assume $h(x)$ is not bounded below by 0. Then $\exists x \in I$ s.t. $f(x)g(x)<0$ which implies that either $f(x)<0$ or $g(x)<0$, either of which is a contradiction. Assume that $h(x)$ is not bounded above by $M$. This implies that $\exists x \in I$ s.t. $f(x)g(x) > M$, so either $f(x)>1$ or $g(x)>M$, either of which is a contradiction. So, $h(x)$ is bounded by 0 and $M$.} Note that $f(x)$ is increasing on $(-\infty,-1)$ and decreasing on $(0,\infty)$,\footnote{prove inc, dec here}. Note that $[-1,0]$ is compact on $\mathbb{R}$ by the Heine-Borel theorem. Then, by the extreme value theorem, $g(x)$ achieves its maximum for some  on $[-1,0]$ and is thus bounded above by some $M \geq 0$. Therefore, $h(x)$ is bounded above by $M$ and below by $0$, and this   %Show e^(...) is decreasing below a certain point and increasing above a certain point so we can just use 
@@ -113,14 +130,50 @@ Suppose you have two maps of Wisconsin, one large and one small. We put the larg
 
 Take an arbitrary $x \in W$. This is a point somewhere on the big map, and hence corresponds to some physical location in Wisconsin. There is a point on the small map of Wisconsin which corresponds to the same geographical location. The small map is covered by the large map, so this point on the small map is touching a point on the large map. The point on the large map that touches the point on the small map corresponding to the same location as $x$ is $T(x)$.
 
-Since by assumption the small map is smaller than the large map, $\exists \beta <1$ such that $\forall x,y \in W$ we have $\beta d(x,y)\geq d(T(x),T(y)).$\footnote{This is because the d(T(x),T(y)) will be the same as the distance on the small map between the points corresponding to the same locations as x and y correspond to on the large map. The small map is shrunk by some $\beta <1$ relative to the big map, so $\beta d(x,y) = d(T(x),T(y))$ } Then $T$ is a contraction of modulus $\beta$, so by the contraction mapping theorem $T$ has a fixed point $x^*$ where $x^* = T(x^*)$ so at $x^*$ the big map and small map correspond to the same location in Wisconsin.
+Since by assumption the small map is smaller than the large map, $\exists \beta <1$ such that $\forall x,y \in W$ we have $\beta d(x,y)\geq d(T(x),T(y)).$\footnote{This is because the d(T(x),T(y)) will be the same as the distance on the small map between the points corresponding to the same locations  x and y correspond to on the large map. The small map is shrunk by some $\beta <1$ relative to the big map, so $\beta d(x,y) = d(T(x),T(y))$ $\forall x,y \in W.$ } Then $T$ is a contraction of modulus $\beta$, so by the contraction mapping theorem $T$ has a fixed point $x^*$ where $x^* = T(x^*)$ so at $x^*$ the big map and small map correspond to the same location in Wisconsin.
 
 \section{Question 5}
 Consider the set $X = \{ -1, 0, 1 \}$ and the space of all functions on $X$, $F_X = \{ f: X \rightarrow \mathbb{R} \}$.
 
 \subsection{Show that $F_X$ is a vector space.}
+\begin{itemize}
+\item
+Let $a,b,c \in F_X$. $\forall x \in X,$ $(a(x) + b(x)) +c(x) = a(x) + (b(x) +c(x))$.
+\item
+Let $a,b \in F_X$. $\forall x \in X,$ $a(x) + b(x) =  b(x) + a(x)$. 
+\item
+Let $0(x):= 0$  $\forall x \in X$. $0(x) \in F_X.$ Let $a \in F_X$.  $\forall x \in X,$ $a(x) + 0(x) = 0(x) + a(x) = a(x).$
+\item
+Let $a \in F_X$. Then $a^{'}(x):= -a(x)$ $\forall x \in X$, and $a^{'} \in F_X$.  $\forall x \in X,$  $a(x) + a^{'}(x) = 0.$
+\item
+Let $a \in \mathbb{R}, b,c \in F_X.$ $\forall x \in X$, $a (b(x) + c(x)) = ab(x) + ac(x).$
+\item
+Let $a,b \in \mathbb{R}, c \in F_X.$ $\forall x \in X$, $(a+b)c(x) = ac(x) + b(c(x)).$
+\item
+Let $a,b \in \mathbb{R}, c \in F_X.$ $\forall x \in X$, $(ab)c(x) = a(bc(x)).$
+\item
+Let $a \in F_X$. $\forall x \in X$, $1 a(x) = a(x)$.
+\end{itemize}
+From the above, $F_X$ meets the definition of a vector space.
 \subsection{Show that the operator $T: F_X \rightarrow F_X$ defined by $T(f)(x) = f(x^2), x \in \{ -1,0,1\}$ is linear.}
-\subsection{Calculate kern $T$, Im $T$, and rank $T$.}
+Let $a,b \in \mathbb{R}, c,d \in F_X.$ Then, $\forall x \in X,$ $T(ac(x) + bd(x)) = ac(x^2) + bd(x^2) = aT(c(x)) + bT(d(x)).$ Thus, $T$ is a linear transformation.
+\subsection{Calculate ker $T$, Im $T$, and rank $T$.}
+\begin{itemize}
+\item
+For $a \in F_X$ such that $T(a(x)) = 0$ $\forall x \in X \Rightarrow a(x^2) = 0$ $\forall x \in X$ so  $a(0) = 0$ and $a(1) = 0.$ Thus, ker $ T = \{f|X \rightarrow \mathbb{R}, f(0) = f(1) = 0\}$.
+\item
+Let $a,b \in \mathbb{R}.$ $\exists f \in F_X$ s.t. $f(0) = a, f(1) = b$. We then have the following:
+\begin{equation*}
+T(f(x)) = f(x^2) = 
+\begin{cases}
+a,& \text{ if } x \in \{ 0\} \\
+b,& \text{ if } x \in \{ -1,1\}
+\end{cases}.
+\end{equation*} 
+Thus, Im $T = \mathbb{R}^2$.
+\item
+rank $T = $ dim$($Im $T) = $ dim$(\mathbb{R}^2) = 2.$ 
+\end{itemize}
 \section{Question 6}
 Consider the following system of linear equations:
 \begin{equation}
@@ -132,5 +185,20 @@ Consider the following system of linear equations:
 \end{equation}
 Let $X$ be the set of $\{ x_1,x_2,x_3,x_4 \}$ which satisfy (\ref{eqn:linsys}).
 \subsection{Show that $X$ is a vector space.}
+Adding the first two equations together we find $4x_1 + 3x_3 = 0 \Rightarrow x_3 = - \frac{4}{3} x_1.$ We then simplify the third equation as $0 = 5x_1 -3(x_2 + x_4)\Rightarrow x_1 = \frac{3}{5}(x_2 + x_4)$. Substituting this back into the equation for $x_3$, we find $x_3 = - \frac{4}{3}\frac{3}{5}(x_2 + x_4) = - \frac{4}{5}(x_2 + x_4)$. So, for any $x_1,x_2,x_3,x_4$ satisfying (\ref{eqn:linsys}), $\exists a,b \in \mathbb{R}$, with $a=x_2$ and $b = x_4$, such that
+\begin{equation*}
+\colvec{4}{x_1}{x_2}{x_3}{x_4} = \colvec{4}{\frac{3}{5}(a+b)}{a}{-\frac{4}{5}(a+b)}{b} = \colvec{4}{\frac{3}{5}a}{a}{-\frac{4}{5}a}{0} + \colvec{4}{\frac{3}{5}b}{0}{-\frac{4}{5}b}{b} = \colvec{4}{\frac{3}{5}}{1}{-\frac{4}{5}}{0} a + \colvec{4}{\frac{3}{5}}{0}{-\frac{4}{5}}{1}b = \vec{u}a + \vec{v}b
+\end{equation*}%So, [$x_1$ $x_2$ $x_3$ $x_4]^T = [(\frac{3}{5} (a+b)) a (-\frac{4}{5}(a+b)) b]^T$
+so $\{\vec{u},\vec{v}\}$ is a basis for $X$.
+
+For $c,d \in X$, $\exists m,n,o,p \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}, d = o\vec{u} + p\vec{v}$. Then, $c+d = m\vec{u} + n\vec{v} +  o\vec{u} + p\vec{v} = (m+o)\vec{u} + (n+p)\vec{v}\in X.$ Additionally, for $c \in X$ $\exists m,n \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}$. For $\alpha \in \mathbb{R},$ $\alpha c = \alpha(m\vec{u} + n\vec{v}) = (\alpha m)\vec{u} + (\alpha n)\vec{v} \in X.$ Thus, properties 1,2,5,6,7 of the definition of a vector space are trivially satisfied for $X$.
+
+Furthermore, note that $\vec{0} = 0\vec{u} + 0\vec{v} \in X$. For $c \in X$, $\exists a,b \in \mathbb{R}$ such that $c = a\vec{u} + b\vec{v}$ and $c + \vec{0} = (a+0)\vec{u} + (b+0)\vec{v} = (0+a)\vec{u} + (0+b)\vec{v}  = c + \vec{0}= a\vec{u} + b\vec{v} = c.$ This satisfies property 3 of the definition of a vector space. 
+
+For $c \in X$ with $m,n \in \mathbb{R}$ s.t. $c = m\vec{u} + n\vec{v}$, then $1*c = 1*( m\vec{u} + n\vec{v}) = 1*m\vec{u} + 1*n\vec{v} =  m\vec{u} + n\vec{v} = c$, and $\exists d \in X$ such that $d = (-m)\vec{u} + (-n)\vec{v},$ and $c+d =  m\vec{u} + n\vec{v} +  (-m)\vec{u} + (-n)\vec{v} =  (m-m)\vec{u} + (n-n)\vec{v} =  0\vec{u} + 0\vec{v} = \vec{0}.$ So, properties 4 and 8 of the definition of a vector space are satisfied. 
+
+As $X$ satisfies all properties $1-8$ of the definition of a vector space, $X$ is a vector space.
+
 \subsection{Calculate dim $X$.}
+dim $X$ is the cardinality of $X$. Since $\{ \vec{u},\vec{v}\}$ is a basis for $X$, the cardinality of $X$ is 2 so dim $X = 2$.
 \end{document}
