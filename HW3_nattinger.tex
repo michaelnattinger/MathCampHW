@@ -168,11 +168,17 @@ T(f(x)) = f(x^2) =
 \begin{cases}
 a,& \text{ if } x \in \{ 0\} \\
 b,& \text{ if } x \in \{ -1,1\}
-\end{cases}.
+\end{cases},
 \end{equation*} 
-Thus, $a,b \in$ Im $T$, so Im $T = \mathbb{R}^2$.
+so the image of $T$ is $\{ f| f(1) = f(-1) = a, f(0) = b, a,b \in \mathbb{R}\}$.
 \item
-rank $T = $ dim$($Im $T) = $ dim$(\mathbb{R}^2) = 2.$ 
+To find the rank of $T$, we will first find a basis. Define $f_0,f_1 \in F_X$ s.t. $f_0(-1) = 0, f_0(0) = 1, f_0(1) = 0,f_1(-1) = 1, f_1(0) = 0, f_1(1) = 1.$
+
+Let $f \in F_X.$ Then, $\exists a,b \in \mathbb{R}$ s.t. $f(0) = a,f(1) = b.$ Then, $T(f(0)) = a, T(f(1)) = T(f(-1)) = b.$ Also, note that $af_0(0) +bf_1(0) = a = T(f(0), af_0(1) +bf_1(1) = b = T(f(1)), af_0(-1) + bf_1(-1) = b = T(f(-1)) $ so $\{ f_0,f_1\}$ spans $T.$ 
+
+Let $a,b \in \mathbb{R}$ s.t. $af_0(x) + bf_1(x) = 0(x)$ $\forall x \in \{-1,0,1\}$, with $0(x)$ defined as in 5.1. Then, $af_0(0) + bf_1(0) = a = 0$ and $af_0(1) + bf_1(1) = b = 0$ so $a=b=0.$ Thus, $\{ f_0,f_1\}$ are independent and span $T$ so they form a basis for $T$. Therefore, since the cardinality of $\{ f_0,f_1\}$ is 2, rank $T = 2.$
+ 
+%rank $T = $ dim$($Im $T) = $ dim$(\mathbb{R}^2) = 2.$ 
 \end{itemize}
 \section{Question 6}
 Consider the following system of linear equations:
@@ -191,7 +197,7 @@ Adding the first two equations together we find $4x_1 + 3x_3 = 0 \Rightarrow x_3
 \end{equation*}%So, [$x_1$ $x_2$ $x_3$ $x_4]^T = [(\frac{3}{5} (a+b)) a (-\frac{4}{5}(a+b)) b]^T$
 %so $\{\vec{u},\vec{v}\}$ is a basis for $X$.
 
-For $c,d \in X$, $\exists m,n,o,p \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}, d = o\vec{u} + p\vec{v}$. Then, $c+d = m\vec{u} + n\vec{v} +  o\vec{u} + p\vec{v} = (m+o)\vec{u} + (n+p)\vec{v}\in X.$ Additionally, for $c \in X$ $\exists m,n \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}$. For $\alpha \in \mathbb{R},$ $\alpha c = \alpha(m\vec{u} + n\vec{v}) = (\alpha m)\vec{u} + (\alpha n)\vec{v} \in X.$ Thus, properties 1,2,5,6,7 of the definition of a vector space are trivially satisfied for $X$.
+For $c,d \in X$, $\exists m,n,o,p \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}, d = o\vec{u} + p\vec{v}$. Then, $c+d = m\vec{u} + n\vec{v} +  o\vec{u} + p\vec{v} = (m+o)\vec{u} + (n+p)\vec{v}\in X.$ Additionally, for $c \in X$ $\exists m,n \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}$. For $\alpha \in \mathbb{R},$ $\alpha c = \alpha(m\vec{u} + n\vec{v}) = (\alpha m)\vec{u} + (\alpha n)\vec{v} \in X.$ Thus, properties 1,2,5,6,7 of the definition of a vector space are trivially satisfied for $X$ by the properties of $\mathbb{R}^4$.
 
 Furthermore, note that $\vec{0} = 0\vec{u} + 0\vec{v} \in X$. For $c \in X$, $\exists a,b \in \mathbb{R}$ such that $c = a\vec{u} + b\vec{v}$ and $c + \vec{0} = (a+0)\vec{u} + (b+0)\vec{v} = (0+a)\vec{u} + (0+b)\vec{v}  = c + \vec{0}= a\vec{u} + b\vec{v} = c.$ This satisfies property 3 of the definition of a vector space. 
 
