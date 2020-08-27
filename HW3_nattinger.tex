@@ -187,18 +187,26 @@ Let $X$ be the set of $\{ x_1,x_2,x_3,x_4 \}$ which satisfy (\ref{eqn:linsys}).
 \subsection{Show that $X$ is a vector space.}
 Adding the first two equations together we find $4x_1 + 3x_3 = 0 \Rightarrow x_3 = - \frac{4}{3} x_1.$ We then simplify the third equation as $0 = 5x_1 -3(x_2 + x_4)\Rightarrow x_1 = \frac{3}{5}(x_2 + x_4)$. Substituting this back into the equation for $x_3$, we find $x_3 = - \frac{4}{3}\frac{3}{5}(x_2 + x_4) = - \frac{4}{5}(x_2 + x_4)$. So, for any $x_1,x_2,x_3,x_4$ satisfying (\ref{eqn:linsys}), $\exists a,b \in \mathbb{R}$, with $a=x_2$ and $b = x_4$, such that
 \begin{equation*}
-\colvec{4}{x_1}{x_2}{x_3}{x_4} = \colvec{4}{\frac{3}{5}(a+b)}{a}{-\frac{4}{5}(a+b)}{b} = \colvec{4}{\frac{3}{5}a}{a}{-\frac{4}{5}a}{0} + \colvec{4}{\frac{3}{5}b}{0}{-\frac{4}{5}b}{b} = \colvec{4}{\frac{3}{5}}{1}{-\frac{4}{5}}{0} a + \colvec{4}{\frac{3}{5}}{0}{-\frac{4}{5}}{1}b = \vec{u}a + \vec{v}b
+\colvec{4}{x_1}{x_2}{x_3}{x_4} = \colvec{4}{\frac{3}{5}(a+b)}{a}{-\frac{4}{5}(a+b)}{b} = \colvec{4}{\frac{3}{5}a}{a}{-\frac{4}{5}a}{0} + \colvec{4}{\frac{3}{5}b}{0}{-\frac{4}{5}b}{b} = \colvec{4}{\frac{3}{5}}{1}{-\frac{4}{5}}{0} a + \colvec{4}{\frac{3}{5}}{0}{-\frac{4}{5}}{1}b = \vec{u}a + \vec{v}b.
 \end{equation*}%So, [$x_1$ $x_2$ $x_3$ $x_4]^T = [(\frac{3}{5} (a+b)) a (-\frac{4}{5}(a+b)) b]^T$
-so $\{\vec{u},\vec{v}\}$ is a basis for $X$.
+%so $\{\vec{u},\vec{v}\}$ is a basis for $X$.
 
 For $c,d \in X$, $\exists m,n,o,p \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}, d = o\vec{u} + p\vec{v}$. Then, $c+d = m\vec{u} + n\vec{v} +  o\vec{u} + p\vec{v} = (m+o)\vec{u} + (n+p)\vec{v}\in X.$ Additionally, for $c \in X$ $\exists m,n \in \mathbb{R}$ such that $c = m\vec{u} + n\vec{v}$. For $\alpha \in \mathbb{R},$ $\alpha c = \alpha(m\vec{u} + n\vec{v}) = (\alpha m)\vec{u} + (\alpha n)\vec{v} \in X.$ Thus, properties 1,2,5,6,7 of the definition of a vector space are trivially satisfied for $X$.
 
 Furthermore, note that $\vec{0} = 0\vec{u} + 0\vec{v} \in X$. For $c \in X$, $\exists a,b \in \mathbb{R}$ such that $c = a\vec{u} + b\vec{v}$ and $c + \vec{0} = (a+0)\vec{u} + (b+0)\vec{v} = (0+a)\vec{u} + (0+b)\vec{v}  = c + \vec{0}= a\vec{u} + b\vec{v} = c.$ This satisfies property 3 of the definition of a vector space. 
 
-For $c \in X$ with $m,n \in \mathbb{R}$ s.t. $c = m\vec{u} + n\vec{v}$, then $1*c = 1*( m\vec{u} + n\vec{v}) = 1*m\vec{u} + 1*n\vec{v} =  m\vec{u} + n\vec{v} = c$, and $\exists d \in X$ such that $d = (-m)\vec{u} + (-n)\vec{v},$ and $c+d =  m\vec{u} + n\vec{v} +  (-m)\vec{u} + (-n)\vec{v} =  (m-m)\vec{u} + (n-n)\vec{v} =  0\vec{u} + 0\vec{v} = \vec{0}.$ So, properties 4 and 8 of the definition of a vector space are satisfied. 
+For $c \in X$ $\exists m,n \in \mathbb{R}$ s.t. $c = m\vec{u} + n\vec{v}$, then $1*c = 1*( m\vec{u} + n\vec{v}) = 1*m\vec{u} + 1*n\vec{v} =  m\vec{u} + n\vec{v} = c$, and $\exists d \in X$ such that $d = (-m)\vec{u} + (-n)\vec{v},$ and $c+d =  m\vec{u} + n\vec{v} +  (-m)\vec{u} + (-n)\vec{v} =  (m-m)\vec{u} + (n-n)\vec{v} =  0\vec{u} + 0\vec{v} = \vec{0}.$ So, properties 4 and 8 of the definition of a vector space are satisfied. 
 
 As $X$ satisfies all properties $1-8$ of the definition of a vector space, $X$ is a vector space.
 
 \subsection{Calculate dim $X$.}
-dim $X$ is the cardinality of $X$. Since $\{ \vec{u},\vec{v}\}$ is a basis for $X$, the cardinality of $X$ is 2 so dim $X = 2$.
+From the above, any $x \in X$ can be written as a linear combination of $\vec{u},\vec{v}$. Thus, $\vec{u},\vec{v}$ span $X$. We will now check $\vec{u},\vec{v}$ for linear dependence.
+
+Let $a,b \in \mathbb{R}$ such that $a\vec{u} + b\vec{v} = \vec{0}.$ Then,
+
+\begin{equation*}
+\colvec{4}{\frac{3}{5}}{1}{-\frac{4}{5}}{0} a + \colvec{4}{\frac{3}{5}}{0}{-\frac{4}{5}}{1}b = \vec{0} \Rightarrow \colvec{4}{\frac{3}{5}(a+b)}{a}{-\frac{4}{5}(a+b)}{b} = \vec{0} \Rightarrow a = b = 0.
+\end{equation*}
+
+So, $\vec{u},\vec{v}$ are independent and span $X$. Thus, $\{ \vec{u},\vec{v}\}$ is a basis for X. Since $\{ \vec{u},\vec{v}\}$ is a basis for $X$, the cardinality of $X$ is 2 so dim $X = 2$.
 \end{document}
