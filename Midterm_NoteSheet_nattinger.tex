@@ -134,6 +134,43 @@ $\lim\limits_{x \rightarrow x_0} f(x) = y_0$ if and only if for any sequence $\{
 
 The limit of $f$ as $x \rightarrow x_0$, when it exists, is unique.
 
+A function is \textbf{continuous} at $x_0$ if $\forall \epsilon>0 \exists \delta>0$ s.t. if $d(x,x_0) < \delta$, then $\rho(f(x),f(x^0)) < \epsilon$. ($\delta$ can vary for different $x^0$ and $\epsilon$)
+
+A function $f$ is continuous at $x_0$ if and only if one of the following equivalent statements is true:
+\begin{itemize}
+\item $f(x_0)$ is defined and either $x_0$ is an isolated point or $x_0$ is a limit point of X and $\lim\limits_{x \rightarrow x_0} f(x) = f(x_0)$.
+\item For any sequence $\{ x_n\}$ s.t. $x_n \rightarrow x_0$, the sequence $\{ f(x_n)\}$ converges to $f(x_0)$.
+\end{itemize}
+
+A function $f$ is continuous if it is continuous at every point of its domain.
+
+A function $f$ is continuous iff for any closed set C, the set $f^{-1}(C)$ is closed. A function $f$ is continuous iff for any open set A, the set $f^{-1}(A)$ is open.
+
+A function is uniformly continuous if $\forall \epsilon > 0 \exists \delta>0$ s.t. $if d(x,x_0)<\delta,$ then $\rho(f(x),f(x_0)) < \epsilon$. Note: delta depends only on epsilon!
+
+Uniform continuity implies continuity.
+
+Let $(X,d),(Y,\rho)$ be two metric spaces, $f:X \rightarrow Y, E\subset X.$ Then f is \textbf{Lipschitz} on $E$ if $\exists K>0$ s.t. $\rho(f(x),f(y)) \leq K d(x,y) \forall x,y \in E.$ $f$ is \textbf{locally Lipschitz} on $E$ if $\forall x \in E \exists \epsilon > 0$ s.t. f is Lipscitz on $B_{\epsilon}(x) \cap E.$
+
+Lipschitz implies uniform continuity.
+
+Let $X \subset \mathbb{R}.$ Then $u \in \mathbb{R}$ is an upper bound for $X$ if $x\leq u \forall x \in X$ (and opposite for lower bound). X is bounded above if there is an upper boound for $X$.
+
+Suppose $X$ is bounded above. The supremum of $X$, $sup X$, is the smallest upper bound for $X$, i.e. $supX$ satisfies
+\begin{itemize}
+\item $supX \geq x$ $\forall x \in X$;
+\item $\forall y<supX \exists x \in X$ s.t. $x>y$.
+\end{itemize}
+ And infimum is similarly defined.
+
+\textbf{Supremum Property}: Every nonempty set of real numbers that is bounded above has a supremum, and the supremum is a real number. (Not generally the case for all numbers e.g. sets that would be bounded by irrational numbers in the reals do not have a supremum when they are instead defined in the rationals)
+
+\textbf{Extreme Value Theorem}: Let $f:[a,b]\rightarrow \mathbb{R}$ be continuous. Then $f$ attains its maximum and minimum on $[a,b]$.
+
+\textbf{Intermediate Value Theorem}: Let $f:[a,b]\rightarrow \mathbb{R}$ be a continuous function. Then for any $\gamma \in [f(a),f(b)]$ there exists $c \in [a,b]$ s.t. $f(c) = \gamma$.
+
+Let $f$ be monotonically increasing. Then one-sided limits exist for all x. Moreover, $sup\{f(s)|a<s<x\} = f(x^{-} \leq f(x) \leq f(x^{+}) = inf\{ f(s)|x<s<b\}$.
+
 \section{Linear Algebra}
 
 \end{document}

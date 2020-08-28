@@ -130,7 +130,7 @@ Suppose you have two maps of Wisconsin, one large and one small. We put the larg
 
 Take an arbitrary $x \in W$. This is a point somewhere on the big map, and hence corresponds to some physical location in Wisconsin. There is a point on the small map of Wisconsin which corresponds to the same geographical location. The small map is covered by the large map, so this point on the small map is touching a point on the large map. The point on the large map that touches the point on the small map corresponding to the same location as $x$ is $T(x)$.
 
-Since by assumption the small map is smaller than the large map, $\exists \beta <1$ such that $\forall x,y \in W$ we have $\beta d(x,y)\geq d(T(x),T(y)).$\footnote{This is because the d(T(x),T(y)) will be the same as the distance on the small map between the points corresponding to the same locations  x and y correspond to on the large map. The small map is shrunk by some $\beta <1$ relative to the big map, so $\beta d(x,y) = d(T(x),T(y))$ $\forall x,y \in W.$ } Then $T$ is a contraction of modulus $\beta$, so by the contraction mapping theorem $T$ has a fixed point $x^*$ where $x^* = T(x^*)$ so at $x^*$ the big map and small map correspond to the same location in Wisconsin.
+Since by assumption the small map is smaller than the large map, $\exists \beta <1$ such that $\forall x,y \in W$ we have $\beta d(x,y)\geq d(T(x),T(y)).$\footnote{This is because the d(T(x),T(y)) will be the same as the distance on the small map between the points corresponding to the same locations  x and y correspond to on the large map. The small map is shrunk by some $0\leq \beta <1$ relative to the big map, so $\beta d(x,y) \geq d(T(x),T(y))$ $\forall x,y \in W.$ } Then $T$ is a contraction of modulus $\beta$, so by the contraction mapping theorem $T$ has a fixed point $x^*$ where $x^* = T(x^*)$ so at $x^*$ the big map and small map correspond to the same location in Wisconsin.
 
 \section{Question 5}
 Consider the set $X = \{ -1, 0, 1 \}$ and the space of all functions on $X$, $F_X = \{ f: X \rightarrow \mathbb{R} \}$.
@@ -174,7 +174,7 @@ so the image of $T$ is $\{ f| f(1) = f(-1) = a, f(0) = b, a,b \in \mathbb{R}\}$.
 \item
 To find the rank of $T$, we will first find a basis. Define $f_0,f_1 \in F_X$ s.t. $f_0(-1) = 0, f_0(0) = 1, f_0(1) = 0,f_1(-1) = 1, f_1(0) = 0, f_1(1) = 1.$
 
-Let $f \in F_X.$ Then, $\exists a,b \in \mathbb{R}$ s.t. $f(0) = a,f(1) = b.$ Then, $T(f(0)) = a, T(f(1)) = T(f(-1)) = b.$ Also, note that $af_0(0) +bf_1(0) = a = T(f(0), af_0(1) +bf_1(1) = b = T(f(1)), af_0(-1) + bf_1(-1) = b = T(f(-1)) $ so $\{ f_0,f_1\}$ spans $T.$ 
+Let $f \in F_X.$ Then, $\exists a,b \in \mathbb{R}$ s.t. $f(0) = a,f(1) = b.$ Then, $T(f(0)) = a, T(f(1)) = T(f(-1)) = b.$ Also, note that $af_0(0) +bf_1(0) = a = T(f(0)), af_0(1) +bf_1(1) = b = T(f(1)), af_0(-1) + bf_1(-1) = b = T(f(-1)) $ so $\{ f_0,f_1\}$ spans $T.$ 
 
 Let $a,b \in \mathbb{R}$ s.t. $af_0(x) + bf_1(x) = 0(x)$ $\forall x \in \{-1,0,1\}$, with $0(x)$ defined as in 5.1. Then, $af_0(0) + bf_1(0) = a = 0$ and $af_0(1) + bf_1(1) = b = 0$ so $a=b=0.$ Thus, $\{ f_0,f_1\}$ are independent and span $T$ so they form a basis for $T$. Therefore, since the cardinality of $\{ f_0,f_1\}$ is 2, rank $T = 2.$
  
