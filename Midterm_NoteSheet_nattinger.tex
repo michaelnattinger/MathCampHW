@@ -67,7 +67,7 @@
 
 %%% The "real" document content comes below...
 
-\title{HW3}
+\title{Exam Note Sheet}
 %\author{Michael B. Nattinger\footnote{I worked on this assignment with my study group: Alex von Hafften, Andrew Smith, Ryan Mather, and Tyler Welch. I have also discussed problem(s) with Emily Case, Sarah Bass, and Danny Edgel.}}
 \author{Michael B. Nattinger}
 
@@ -114,7 +114,7 @@ Given a real sequence $\{ x_n\}$, the infinite sum of its terms is well-defined 
 
 Let $(X,d)$ be a metric space. A set $A\subset X$ is \textbf{open} if $\forall x \in A \exists \epsilon > 0 s.t. B_\epsilon(x) \subset A.$ A set $C \subset X$ is \textbf{closed} if its complement is open. This depends on the metric space. $[0,1]$ is not open in $(\mathbb{R},d_E)$ but is open in $([0,1],d_E)$.
 
-Let $X,d)$ be a metric space.
+Let $(X,d)$ be a metric space.
 \begin{itemize}
 \item $\emptyset,X$ are simultaneously open and closed in X;
 \item the union of an arbtrary collection of open sets is open;
@@ -171,6 +171,142 @@ Suppose $X$ is bounded above. The supremum of $X$, $sup X$, is the smallest uppe
 
 Let $f$ be monotonically increasing. Then one-sided limits exist for all x. Moreover, $sup\{f(s)|a<s<x\} = f(x^{-} \leq f(x) \leq f(x^{+}) = inf\{ f(s)|x<s<b\}$.
 
+A sequence is \textbf{Cauchy} if $\forall \epsilon > 0 \exists N > 0$ s.t. if $m,n>N$ then $d(x_n,x_m)<\epsilon.$
+
+Every convergent sequence in a metric space is Cauchy.
+
+A metric space is \textbf{complete} if every Cauchy sequence contained in $X$ converges to some point in $X$. Euclidean space is complete. If $(X,d)$ is a complete metric space and $Y \subset X,$ then $(Y,d)$ is complete if and only if $Y$ is closed.
+
+A function from a metric space to itself is called an \textbf{operator}. An operator is a contraction of modulus $\beta$ if $\beta < 1$ and $d(T(x),T(y)) \leq \beta d(x,y)$ $\forall x,y \in X.$
+
+Every contraction is uniformly continuous.
+
+A \textbf{fixed point} of an operator is an element $x_0 \in X$ s.t. $T(x_0) = x_0$.
+
+\textbf{Contraction Mapping Theorem}: Let $(X,d)$ be a nonempty \textbf{complete} metric space and $T:X \rightarrow X$ a contraction with modulus $\beta<1$. Then $T$ has a unique fixed point $x_0$. Additionally, $\forall x_0 \in X$ the sequence $\{ x_n\}$, where $x_n = T^n(x_0) = T(T(\dots T(x_0)\dots ))$ converges to $x_0$.
+
+Continuous dependence of the fixed point on parameters: Let $(X,d)$ and $(\Omega,\rho)$ be two metric spaces and $T:X \times \Omega \rightarrow X.$ For each $\omega \in \Omega$, let $T_{\omega}: X \rightarrow X$ be defined by $T_{\omega}(x) = T(x,\omega)$. Suppose $(X,d)$ is complete, $T$ is continuous in $\omega$, and $\exists \beta < 1$ such that $T_{\omega}$ is a contraction of modulus $\beta$ for all $\omega \in \Omega.$ Then the fixed point function $x^* : \Omega \rightarrow X$ defined by $x^*(\omega) = T_{\omega}(x^*(\omega))$ is continuous.
+
+\textbf{Blackwell's Sufficient Conditions}: Let $B(X)$ be the set of all bounded functions from $X \rightarrow \mathbb{R}$ with metric $d_{\infty}(f,g) = sup_{x\in X} |f(x) - g(x)|$. Let $T:B(X) \rightarrow B(X)$ satisfy:
+\begin{itemize}
+\item (monotonicity) if $f(x) \leq g(x)$ $\forall x \in X$, then $(T(f))(x) \leq (T(g))(x)$ $\forall x \in X$.
+\item (discounting) $\exists \beta \in (0,1)$ s.t. for every $a \geq 0$ and $x \in X$, $(T(f+a))(x) \leq (T(f))(x) + \beta a$.
+\end{itemize}
+Then $T$ is a contraction with modulus $\beta$.
+
+A collection of sets $U = \{u_{\lambda}|\lambda \in \Lambda \}$ in a metric space is an open cover of the set $A$ if $U_{\lambda}$ is open for all $\lambda \in \Lambda$ and $A \subset \bigcup_{\lambda \in \Lambda} U_{\lambda}.$
+
+A set $A$ in a metric space is \textbf{compact} if every open cover of A contains a finite subcover of $A$.
+
+To prove something is compact, find a way to reduce any general open cover into a finite subcover. To prove something is not compact, find an infinite subcover which cannot be reduced in this way.
+
+Any closed subset of a compact space is compact.
+If $A$ is a compact subset of a metric space, then $A$ is closed and bounded.
+
+\textbf{Heine-Borel Theorem}: If $A \subset \mathbb{R}^m$, then $A$ is compact if and only if $A$ is closed and bounded.
+
+Closed intervel $[a,b]$ is compact in $(R^m,d_E)$ for any $a,b \in \mathbb{R}^m$.
+
+Let $(X,d)$ and $(Y,\rho)$ be metric spaces. If $f: X \rightarrow Y$ is continuous and $C$ is a compact set in $(X,d)$ then $f(C)$ is compact in $(Y,\rho).$
+
+\textbf{Extreme Value Theorem}: If $C$ is a compact set in a metric space $(X,d)$ and $f:C \rightarrow \mathbb{R}$ is continuous, then $f$ is bounded on $C$ and attains its maximum and minimum.
+
+Let $(X,d)$ and $(Y,\rho)$ be metric spaces, $C \subset X$ compact, $f:C \rightarrow Y$ continuous. Then $f$ is uniformly continuous on $C$.
+
 \section{Linear Algebra}
 
+A \textbf{vector space} $V$ is a collection of vectors, which may be added together and multiplied by scalars, satisfying the following conditions:
+\begin{itemize}
+\item $\forall x,y,z \in V, (x+y)+z = x+(y+z)$;
+\item $\forall x,y \in V, x+y = y+x$;
+\item $\exists \vec{0} \in V$ s.t. $\forall x \in V, x + \vec{0} = \vec{0}+x = x;$
+\item $\forall x \in V \exists (-x) \in V$ s.t. $x + (-x) = \vec{0};$
+\item $\forall \alpha \in \mathbb{R}, x,y \in V, \alpha (x + y) = \alpha x + \alpha y;$
+\item $\forall \alpha, \beta \in \mathbb{R}, x \in V, (\alpha + \beta)x = \alpha x + \beta x;$
+\item $\forall \alpha, \beta \in \mathbb{R}, x \in V, (\alpha \beta)x = \alpha  (\beta x);$
+\item $\forall x \in V, 1 x = x.$
+\end{itemize}
+
+A set spans $V$ if $V = \text{span}W$ where a span is a linear combination of a set of vectors.
+
+A set is linearly independent if $\nexists x_1, \dots, x_n \in X, a_1,\dots, a_n \in \mathbb{R}$ s.t. $\sum a_i  \neq 0$ and $\sum a_i x_i = \vec{0}.$
+
+Alternatively, if $a_i x_i = \vec{0}$ implies $a_1 = \dots =a_n  =0 $ then $X$ is linearly independent. A \textbf{basis} is of $V$ is a set of linearly independent vectors in $V$ that spans $V$.
+
+Let $B$ be a basis for $V$ and enumerate elements of $B$ by a set $\Lambda$ so that $B = \{ v_{\lambda} | \lambda \in \Lambda\}.$ Then every vector $x \in V$ has a unique representation as a linear combination of elements of $B$ with finitely many nonzero coefficients.
+
+Every vector space has a basis. Any two bases of a vector space have the same cardinality.
+
+If $V$ is a vector space and $W \subset V$ is linearly independent, then there exists a linearly independent set B such that $W \subset B \subset \text{span}B = V$
+
+Let $V$ be a vector space. The dimension of $V$ is the cardinality of any basis of $V$. dim$R^n = n.$
+
+Suppose dim$V = n \in \mathbb{N}. If W \subset V and |W|>n$, where $|W|$ denotes the cardinality of $W$, then $W$ is linearly dependent.
+
+Suppose dim$V = n$ and $W \subset V, |W| = n$. Then, if W is linearly independent, then span$W = V$, so $W$ is a basis of $V$; if span$W = V$, then $W$ is linearly independent, so $W$ is a basis of $V$.
+
+Let $X$ and $Y$ be two vector spaces. We say that $T:X \rightarrow Y$ is a linear transformation if for all $x_1,x_2 \in X, a_1,a_2 \in \mathbb{R}$, $T(a_1x_1 + a_2x_2) = a_1T(x_1) + a_2T(x_2)$.
+
+If $L(X,Y)$ is the set of all linear transformations from $X$ to $Y$, then $L(X,Y)$ is a vector space.
+
+If $R:X\rightarrow Y, S:Y \rightarrow Z$ then $R \circ S:X \rightarrow Y$ is a linear transformation.
+
+Let $T \in L(X,Y).$ Im$T: \{T(x)| x\\in X \}$ and ker$T:=\{ x \in X | T(x) = \vec{0}\}$, and the rank of T is rank$T := $ dim$($Im$(T)$.
+
+If $T \in L(X,Y)$, then Im$T$ and ker$T$ are vector subspaces of $Y$ and $X$, respectively.
+
+Let X be a finite-dimensional vector space and $T \in L(X,Y).$ \\ Then dim$X = $ dim$($ker$T) + $rank$T = $dim$($ker$T) + $dim$($Im$T).$
+
+$T \in L(X,Y)$ is invertible if there exists a function $S:Y \rightarrow X$ such that $S(T(x)) = x \forall x \in X, T(S(y)) = y \forall y \in Y.$ The transformation $S$ is called the inverse of $T$ and is denoted $T^{-1}$.
+
+$T$ is invertible means:
+\begin{itemize}
+\item $T$ is one-to-one: $\forall x_1 \neq x_2, T(x_1) \neq T(x_2)$.
+\item $T$ is onto: $\forall y \in Y \exists x \in X$ s.t. $T(x) = u$.
+\end{itemize}
+
+If $T \in L(X,Y)$ is invertible, then $T^{-1} \in L(Y,X)$
+
+$T \in L(X,Y)$ is one-to-one if and only if ker$T = \vec{0}$.
+
+Two vector spaces $X$ and $Y$ are isomorphic if there exists an invertible linear function from $X$ to $Y$. A function with these properties is called an isomorphism.
+
+Let $X$ and $Y$ be two vector spaces, and let $V$ be a basis for $X$. Then a linear transformation $T: X\rightarrow Y$ is completely defined by its value on $V$:
+\begin{itemize}
+\item Given any set $\{ y_{\lambda} | \lambda \in \Lambda\} \subset Y$, $\exists T \in L(X,Y)$ s.t. $T(v_{\lambda}) = y_{\lambda}$ for all $\lambda \in \Lambda$.
+\item If $S,T \in L(X,Y)$ and $S(v_{\lambda}) = T(v_{\lambda})$ for all $\lambda \in \Lambda$, then $S = T$.
+\end{itemize}
+
+Two vectors spaces $X$ and $Y$ are isomorphic iff dim$X = $ dim$Y$. If dim$X = n$, then $X$ is isomorphic to $\mathbb{R}^n$.
+
+Let $V = \{v_1, \dots , v_n \} \in X$ is a basis of $X$. Then $\forall x \in X$ has a unique representation $x = \sum_{i=1}^{n} a_i v_i.$ Then $crd_V(x) = \colvec{3}{a_1}{\dots}{a_n} \in \mathbb{R}^n $ is an isomorphism from $X$ to $\mathbb{R}^n$.
+
+Let $V,W$ be bases of $X,Y$. Then $\forall y \in Y$ has a unique representation $y = \sum_{i=1}^{m}a_iw_i$, e.g. $T(v_1) = \sum_{i=1}^{m} a_{i1}w_i, \dots, T(v_n) = \sum_{i=1}^{m} a_{in}w_i$. Then, \\ 
+mtx$_{W,V}(T) =
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+\dots &\dots &\dots &\dots \\
+a_{m,1} & a_{m,2} & \dots & a_{m,n}
+\end{pmatrix}$ is an isomorphism from $L(X,Y)$ to $M_{m\times n}$.
+
+Example: Let $X = Y = \mathbb{R}^2, V = \{ \colvec{2}{1}{0} \colvec{2}{0}{1}\}, W = \{ \colvec{2}{1}{1} \colvec{2}{-1}{1}\}, T(x) = x$.\\
+ Then, mtx$_{W,V} =  
+\begin{pmatrix}
+0.5 & 0.5 \\
+-0.5 & 0.5
+\end{pmatrix} = (W^{-1})T(V)$.
+
+mtx$_{W,V} (T) $ mtx$_{V,U}(S) = $ mtx $_{W,U}(T\circ S)$
+
+dim$X = n, T \in L(X,X)$. mtx$_V (T) = $ mtx$_{V,V}(T)$.
+
+mtx$_{V}(T) = P^{-1} $mtx$_{W} (T) P$, where $P = $ mtx$_{W,V}(id)$.
+
+$A,B \in M_{n \times n}$ are similar if $A = P^{-1}BP$ for some invertible matrix $P$.
+
+If dim$X = n$, then
+\begin{itemize}
+\item if $T \in L(X,X)$, then any two matrix representations of $T$ are similar.
+\item two similar matrices represent the same linear transformation $T$, relative to suitable bases.
+\end{itemize}
 \end{document}
