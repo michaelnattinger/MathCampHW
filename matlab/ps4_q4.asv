@@ -1,0 +1,24 @@
+clear; close all; clc
+% VAR(1) model (no constant) x_n = Ax_(n-1)
+A = [1 4; 2 -1];
+x0 = [1 1]';
+
+%Step one: Calculate eigenvalues of A, and corresponding eigenvectors
+%Step two: Let D=diag([eigenvalues]) and P =[eigenvectors];
+[D,P] = eig(A);
+%Step three: Calculate Pinv and P D.^t Pinv
+Pinv = inv(P);
+disp('Solution is: A^t = P D.^t Pinv where: ')
+P
+D
+Pinv
+
+%check
+T = 100;
+t = 1:T;
+X = NaN(2,T);
+for tt = t
+    if tt==1
+        X(:,1) =  
+    end
+end
