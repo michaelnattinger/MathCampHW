@@ -109,7 +109,7 @@ Next, assume $\lambda \neq 0.$ Then, $x = \lambda A^{-1}x \Rightarrow \lambda^{-
 \subsection{Define an operator $S: X \rightarrow X$ such that $S(x) = T(x) - \lambda x$ $\forall x \in X$. Is $S$ linear? Prove that ker $S:= \{ x \in X | S(x) = \bar{0}\}$ is a vector space.}
 \underline{pf} Let $a,b \in \mathbb{R}, x,y \in X.$ $S(ax + by) = T(ax + by) - \lambda(ax+by) = aT(x) + bT(y) - \lambda a x - \lambda b y = a(T(x) - \lambda x) + b(T(y) - \lambda y) = aS(x) + bS(y)$ so $S$ is linear.
 
-Note that, for $x \in $ ker $S,$ $S(x) = \bar{0} \Rightarrow T(x) = \lambda x \Rightarrow Ax = \lambda x$ so $x$ is an eigenvector for $T$, or $x = \bar{0}$. Let $x,y \in $ ker$T, a,b \in \mathbb{R}.$ Then define $c:= ax +bx.$ Note that $S(c) = S(ax+by) = aS(x)+bS(y) = \bar{0}$ so ker$T$ is closed under addition and scalar multiplication. We also have that, for $x \in $ ker $T$, $z := -x \in $ ker $T$ and $x+z = \vec{0}.$ Also, $0 \in \mathbb{R}$ so $0x = \bar{0} \in$ ker$T$, and note that for any $y \in $ ker$T$, $\bar{0} + y = y+\bar{0} = y.$  Therefore, ker $T$ is a vector space.
+Note that, for $x \in $ ker $S,$ $S(x) = \bar{0} \Rightarrow T(x) = \lambda x \Rightarrow Ax = \lambda x$ so $x$ is an eigenvector for $T$, or $x = \bar{0}$. Let $x,y \in $ ker$T, a,b \in \mathbb{R}.$ Then define $c:= ax +bx.$ Note that $S(c) = S(ax+by) = aS(x)+bS(y) = \bar{0}$ so ker$T$ is closed under addition and scalar multiplication. Also, $0 \in \mathbb{R}$ so $0x = \bar{0} \in$ ker$T$, and note that for any $y \in $ ker$T$, $\bar{0} + y = y+\bar{0} = y.$  We also have that, for $x \in $ ker $T$, $z := -x \in $ ker $T$ and $x+z = \bar{0}.$ Therefore, ker $T$ is a vector space.
 
 %Thus, ker $S$ is the set of eigenvectors for $T$ corresponding to the eigenvalue $\lambda$, so ker $S$ is a vector space.\footnote{Do I need to prove this last point?}
 
@@ -137,8 +137,8 @@ mtx$_V(T) = $ mtx$_{W,V}(id)^{-1} $ mtx$_W(T)$ mtx$_{W,V}(id) = P^{-1}$ mtx$_W(T
 \end{pmatrix}.
 $
 \subsection{Find $T(1,-2)$ in the basis $V$.}
-%Note that $T(1,-2) = (3,-4)$ so we simply need to find $a,b \in \mathbb{R}$ such that $ a(1,-4) + b(-2,7) = (3,-4)$. Note that if $a^{*} =-13$ and $b^{*} = -8$, then $a^{*}(1,-4) + b^{*}(-2,7) = (-13,52) + (16,-56) = (3,-4)$ so therefore $T(1,-2)$, in the basis of $V$, is $(-13,-8)$.\footnote{The verified solution was found via Matlab.}
-In the basis of V, $T(1,-2) = $ mtx$_{V}(T) \colvec{2}{1}{-2} = \colvec{2}{-73}{-48}$.
+Note that $T(1,-2) = (3,-4)$ so we simply need to find $a,b \in \mathbb{R}$ such that $ a(1,-4) + b(-2,7) = (3,-4)$. Note that if $a^{*} =-13$ and $b^{*} = -8$, then $a^{*}(1,-4) + b^{*}(-2,7) = (-13,52) + (16,-56) = (3,-4)$ so therefore $T(1,-2)$, in the basis of $V$, is $(-13,-8)$.
+%In the basis of V, $T(1,-2) = $ mtx$_{V}(T) \colvec{2}{1}{-2} = \colvec{2}{-73}{-48}$.
 
 \section{Question 4}
 We will solve the linear first order difference equations as described. We will specifically be solving the following system:
