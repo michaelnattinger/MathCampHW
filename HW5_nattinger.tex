@@ -1,0 +1,140 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{HW5}
+\author{Michael B. Nattinger\footnote{I worked on this assignment with my study group: Alex von Hafften, Andrew Smith, and Ryan Mather. I have also discussed problem(s) with Emily Case, Sarah Bass, and Danny Edgel.}}
+
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+Let $X,Y$ be normed vector spaces and $T \in L(X,Y)$.
+\subsection{Let there exist $m>0$ s.t. $m||x|| \leq ||T(x)||$. Prove T is one-to-one.}
+Let $x \in \text{ker}T.$ Then $\exists m>0$ s.t. $m||x|| \leq T(x) = 0 \Rightarrow x = \bar{0}.$ Thus, $\text{ker}T = \{ \bar{0}\} $ so $T$ is one-to-one, and invertible.
+\subsection{Show that $T^{-1}$ is continuous on $T(X)$.}
+%hint: use thm w/ 5 eq things
+%Let $x,y \in \mathbb{R}.$ Note that $\exists m$ s.t. $m||x-y|| \leq ||T(x-y)|| = ||T(x) - T(y)||.$ 
+
+ %Thus, $T$ is lipschitz. Then, $\exists M$ s.t. $M||x-y|| \geq || T(x) - T(y)|| \geq m||x-y|| \Rightarrow \frac{1}{M} ||T(x) - T(y) || \leq ||x-y|| \leq \frac{1}{m}||T(x) - T(y)||$
+
+%$T$ is lipschitz. Let $a,b \in \text{Im}(T).$ Since $T$ is invertible, $\exists x,y \in X$ s.t. $T(x) = a,T(y)=b.$ Then $\exists M$ s.t. $M||x-y|| \geq || T(x) - T(y)|| \Rightarrow M||T^{-1}(a) - T^{-1}(b) || \geq ||a - b||.$
+
+Let $a,b \in \text{Im}(T).$ Since $T$ is invertible, $\exists x,y \in X$ s.t. $T(x) = a,T(y)=b.$ Then $\exists m$ s.t. $m||x-y|| \leq ||T(x-y)|| = ||T(x) - T(y)|| \Rightarrow m||T^{-1}(a)-T^{-1}(b)|| \leq ||a- b|| \Rightarrow ||T^{-1}(a)-T^{-1}(b)|| \leq \frac{1}{m} ||a- b||.$ Thus, $T^{-1}$ is lipschitz and therefore is continuous on $T(X)$.
+\subsection{Let $T^{-1}$ be continuous on $T(X)$. Show that $\exists m>0$ s.t. $m||x|| \leq ||T(x)||.$}
+We have that $T^{-1}$ is continuous on $T(X).$ Then, since $T^{-1}$ is linear, $T^{-1}$ is lipschitz. Let $a \in \text{Im}(T)$. As $T$ is lipschitz, there exists $M>0$ s.t. $||T^{-1}(a) - T^{-1}(\bar{0})|| \leq M ||a - \bar{0}|| \Rightarrow ||T^{-1}(a - \bar{0})|| \leq M||a|| \Rightarrow  ||T^{-1}(a)|| \leq M||a|| \Rightarrow ||x|| \leq M ||T(x)|| \Rightarrow \frac{1}{M}||x|| \leq ||T(x)||$.
+%hint: use thm w/ 5 eq things
+\section{Question 2}
+Consider linear operator $T: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ defined as $T(x,y) = (x+5y,8x+7y)$.
+\subsection{Calculate $||T||$ using the norm $||(x,y)||_1 = |x| + |y|$ in $\mathbb{R}^2$.}
+$||T||$ is the supremum of $||T(x)||$ s.t. $||x||=1$. In this case, the supremum will be the most efficient normalized vector in terms of maximizing $|x+5y| + |8x + 7y|.$ In this case, $y$ is more efficient in increasing $|x+5y| + |8x + 7y|$ than $x$, so $(0,1)$ will attain the supremum: $|5|+|7| = 12.$
+\subsection{Calculate $||T||$ using the norm $||(x,y)||_{\infty} = \max \{|x|,|y| \}$ in $\mathbb{R}^2$.}
+$||T||$ is the supremum of $T(x)$ s.t. $||x||=1$. In this case, unlike the previous problem, we can set both $x$ and $y$ to be $1$ without penalty, so $(1,1)$ achieves the supremum: $\max \{ |1 + 5|,|8 + 7|\} = 15.$
+
+\section{Question 3}
+Consider the standard basis in $\mathbb{R}^2$, $W$, and another orthonormal basis $V = \{ (a_1,a_2),(b_1,b_2)\} = \{a,b\}$. Prove that the Euclidean norm of any vector $(x,y) \in \mathbb{R}^2$ is the same in $W$ and $V$.
+
+Let $x,y \in \mathbb{R}^2.$ $\exists \alpha,\beta \in \mathbb{R}$ s.t. $x = \alpha a_1 + \beta b_1, y = \alpha a_2 + \beta b_2.$ Then we can solve for $\alpha$ an $\beta$ as follows:
+\begin{align*}
+x &= \alpha a_1 + \beta b_1 \Rightarrow \alpha = \frac{x - \beta b_1}{a_1} \\
+y &= \alpha a_2 + \beta b_2 \Rightarrow  \alpha = \frac{y - \beta b_2}{a_2}  = \frac{x - \beta b_1}{a_1}\\
+\Rightarrow \beta &= \frac{a_1y - a_2x }{a_1 b_2 - a_2 b_1}, \alpha = \frac{b_2 x - b_1 y}{a_1 b_2 - a_2 b_1}.
+\end{align*}
+Now, plugging into our euclidian norm, we have the following:
+\begin{align*}
+\sqrt{\alpha^2 + \beta^2} &= \sqrt{\left(  \frac{b_2 x - b_1 y}{a_1 b_2 - a_2 b_1}\right)^{2} + \left( \frac{a_1y - a_2x }{a_1 b_2 - a_2 b_1}  \right)^{2}} \\
+&= \sqrt{\frac{b_{2}^{2} x^2 - 2 b_1 y b_2 x + b_{1}^{2} y^{2} + a_{1}^{2} y^2 -2 a_{2} x a_1 y + a_{2}^{2} x^2}{\left( a_1 b_2 - a_2 b_1\right)^2}} \\
+&= \sqrt{\frac{(b_{2}^{2} + a_{2}^{2}) x^2 -2 (b_1b_2 + a_1a_2) xy + (b_{1}^{2} + a_{1}^{2}) y^2}{\left( a_1 b_2 - a_2 b_1\right)^2}}
+\end{align*}
+% Orthonormal basis means a_{1}^{2} + a_{2}^{2} = b_{1}^{2} + b_{2}^{2} = 1, a_1b_1 + a_2b_2 = 0.
+\section{Question 4}
+We will use the approach described to solve the following equation (with boundary condition) for $y(t) \in \mathbb{R}^2$:
+\begin{equation*}
+\frac{d}{dt}y(t) = \begin{pmatrix}1 & 1 \\ 3 & -1 \end{pmatrix}y_t, y(0) = \colvec{2}{1}{3}.
+\end{equation*}
+
+First we must find the eigenvalues of $A$. where $A$ is the matrix in the differential equation. The eigenvalues satisfy $det(A - \lambda I) = 0 \Rightarrow (1-\lambda)(-1-\lambda) - 3 = 0 \Rightarrow -1 +\lambda - \lambda + \lambda^2 -3 = 0 \Rightarrow \lambda^2 - 4 = 0 \Rightarrow \lambda = 2,-2.$
+
+Next we will find our eigenvectors. $Ax = 2 x \Rightarrow \colvec{2}{x_1 + x_2 - 2x_1}{3x_1 - x_2 - 2x_2} = \bar{0} \Rightarrow \colvec{2}{1}{1}$ is an eigenvector corresponding to $\lambda = 2$. $Ax = -2 x \Rightarrow \colvec{2}{x_1 + x_2 + 2x_1}{3x_1 - x_2 + 2x_2} = \bar{0} \Rightarrow \colvec{2}{1}{-3}$ is an eigenvector corresponding to $\lambda = -2$.
+
+So, we have $P = \begin{pmatrix} 1& 1\\1 & -3\end{pmatrix}, D = \begin{pmatrix} e^{2t} & 0 \\ 0 & e^{-2t}\end{pmatrix}$. We can calculate $P^{-1} = \frac{1}{-3 - 1}\begin{pmatrix} -3& -1\\-1 & 1\end{pmatrix} = \begin{pmatrix} 3/4& 1/4\\1/4 & -1/4\end{pmatrix}$.
+
+Our solution is then the following.
+\begin{align*}
+y(t) &= PDP^{-1}y(0) =  \begin{pmatrix} 1& 1\\1 & -3\end{pmatrix}  \begin{pmatrix} e^{2t} & 0 \\ 0 & e^{-2t}\end{pmatrix} \begin{pmatrix} 3/4& 1/4\\1/4 & -1/4 \end{pmatrix} \colvec{2}{1}{3}\\
+ &= \begin{pmatrix} 1& 1\\1 & -3\end{pmatrix}  \begin{pmatrix} e^{2t} & 0 \\ 0 & e^{-2t}\end{pmatrix} \colvec{2}{3/2}{-1/2} =  \begin{pmatrix} 1& 1\\1 & -3\end{pmatrix} \colvec{2}{(3/2) e^{2t}}{(-1/2) e^{-2t}} \\
+&= \colvec{2}{(3/2) e^{2t}-(1/2) e^{-2t} }{(3/2) e^{2t} + (3/2) e^{-2t}}
+\end{align*}
+\section{Question 5}
+We will check the signs of our eigenvalues, and determine if our solution is stable.
+
+Our eigenvalues were $2,-2$. Clearly $2>0$ so our solution is not stable. This is clear also from the form of $y(t)$. The $e^{2t}$ term in the top and bottom of the vector goes to infinity.
+\end{document}
