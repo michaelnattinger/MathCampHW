@@ -63,15 +63,10 @@
         \fi
 }
 
-%%% END Article customizations
-
-%%% The "real" document content comes below...
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \title{HW5}
 \author{Michael B. Nattinger\footnote{I worked on this assignment with my study group: Alex von Hafften, Andrew Smith, and Ryan Mather. I have also discussed problem(s) with Emily Case, Sarah Bass, and Danny Edgel.}}
-
-%\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
 
 \begin{document}
 \maketitle
@@ -93,28 +88,45 @@ Let $a,b \in \text{Im}(T).$ Since $T$ is invertible, $\exists x,y \in X$ s.t. $T
 We have that $T^{-1}$ is continuous on $T(X).$ Then, since $T^{-1}$ is linear, $T^{-1}$ is lipschitz. Let $a \in \text{Im}(T)$. As $T$ is lipschitz, there exists $M>0$ s.t. $||T^{-1}(a) - T^{-1}(\bar{0})|| \leq M ||a - \bar{0}|| \Rightarrow ||T^{-1}(a - \bar{0})|| \leq M||a|| \Rightarrow  ||T^{-1}(a)|| \leq M||a|| \Rightarrow ||x|| \leq M ||T(x)|| \Rightarrow \frac{1}{M}||x|| \leq ||T(x)||$.
 %hint: use thm w/ 5 eq things
 \section{Question 2}
-Consider linear operator $T: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ defined as $T(x,y) = (x+5y,8x+7y)$.
+Consider linear operator $T: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ defined as $T(x,y) = (x+5y,8x+7y)$. Since dim $T = 2$, $T$ is bounded. Therefore, $\norm{T} = \text{sup}_{\norm{x}_x = 1}\norm{T(x)}$.
 \subsection{Calculate $||T||$ using the norm $||(x,y)||_1 = |x| + |y|$ in $\mathbb{R}^2$.}
 $||T||$ is the supremum of $||T(x)||$ s.t. $||x||=1$. In this case, the supremum will be the most efficient normalized vector in terms of maximizing $|x+5y| + |8x + 7y|.$ In this case, $y$ is more efficient in increasing $|x+5y| + |8x + 7y|$ than $x$, so $(0,1)$ will attain the supremum: $|5|+|7| = 12.$
 \subsection{Calculate $||T||$ using the norm $||(x,y)||_{\infty} = \max \{|x|,|y| \}$ in $\mathbb{R}^2$.}
-$||T||$ is the supremum of $T(x)$ s.t. $||x||=1$. In this case, unlike the previous problem, we can set both $x$ and $y$ to be $1$ without penalty, so $(1,1)$ achieves the supremum: $\max \{ |1 + 5|,|8 + 7|\} = 15.$
+$||T||$ is the supremum of $T(x)$ s.t. $||x||=1$. In this case, unlike the previous problem, we can set both $x$ and $y$ to be $1$ without penalty, but cannot set either higher than 1. Furthermore, $T$ is strictly increasing in both $x,y$ so $(1,1)$ achieves the supremum: $\max \{ |1 + 5|,|8 + 7|\} = 15.$
 
 \section{Question 3}
 Consider the standard basis in $\mathbb{R}^2$, $W$, and another orthonormal basis $V = \{ (a_1,a_2),(b_1,b_2)\} = \{a,b\}$. Prove that the Euclidean norm of any vector $(x,y) \in \mathbb{R}^2$ is the same in $W$ and $V$.
 
-Let $x,y \in \mathbb{R}^2.$ $\exists \alpha,\beta \in \mathbb{R}$ s.t. $x = \alpha a_1 + \beta b_1, y = \alpha a_2 + \beta b_2.$ Then we can solve for $\alpha$ an $\beta$ as follows:
-\begin{align*}
-x &= \alpha a_1 + \beta b_1 \Rightarrow \alpha = \frac{x - \beta b_1}{a_1} \\
-y &= \alpha a_2 + \beta b_2 \Rightarrow  \alpha = \frac{y - \beta b_2}{a_2}  = \frac{x - \beta b_1}{a_1}\\
-\Rightarrow \beta &= \frac{a_1y - a_2x }{a_1 b_2 - a_2 b_1}, \alpha = \frac{b_2 x - b_1 y}{a_1 b_2 - a_2 b_1}.
-\end{align*}
-Now, plugging into our euclidian norm, we have the following:
-\begin{align*}
-\sqrt{\alpha^2 + \beta^2} &= \sqrt{\left(  \frac{b_2 x - b_1 y}{a_1 b_2 - a_2 b_1}\right)^{2} + \left( \frac{a_1y - a_2x }{a_1 b_2 - a_2 b_1}  \right)^{2}} \\
-&= \sqrt{\frac{b_{2}^{2} x^2 - 2 b_1 y b_2 x + b_{1}^{2} y^{2} + a_{1}^{2} y^2 -2 a_{2} x a_1 y + a_{2}^{2} x^2}{\left( a_1 b_2 - a_2 b_1\right)^2}} \\
-&= \sqrt{\frac{(b_{2}^{2} + a_{2}^{2}) x^2 -2 (b_1b_2 + a_1a_2) xy + (b_{1}^{2} + a_{1}^{2}) y^2}{\left( a_1 b_2 - a_2 b_1\right)^2}}
-\end{align*}
+%I will notate the euclidean norm of $x,y$ in $W$ as $\norm{(x,y)}_2^{W}$, and the corresponding eucliean norm in $V$ as $\norm{(x,y)}_2^{V}$.
+%\begin{align*}
+%\norm{(x,y)}_2^{V} &= \norm{\colvec{2}{xa_1 + yb_1}{xa_2 + yb_2}}_2 \\
+%&= \sqrt{(xa_1 + yb_1)^2 + (xa_2 + yb_2)^2} \\
+%&= \sqrt{x^2a_{1}^2 + y^{2}b_{1}^{2} + 2a_1b_1xy + x^2a_{2}^2 + y^2b_{2}^2 + 2a_2b_2xy} \\
+%&= \sqrt{x^2(a_{1}^2+a_{2}^2) + y^2(b_{1}^{2}+b_{2}^2) + 2xy(a_1b_1 + a_2b_2)} \\
+%&= \sqrt{x^2 + y^2}\\
+%&=  \norm{\colvec{2}{x}{y}}_2 = \norm{(x,y)}_2^{W}.
+%\end{align*}
+%
+%Thus, $||(x,y)||_2^{V} = ||(x,y)||_2^{W}$.
+%Let $x,y \in \mathbb{R}^2.$ $\exists \alpha,\beta \in \mathbb{R}$ s.t. $x = \alpha a_1 + \beta b_1, y = \alpha a_2 + \beta b_2.$ Then we can solve for $\alpha$ and $\beta$ as follows:
+%\begin{align*}
+%x &= \alpha a_1 + \beta b_1 \Rightarrow \alpha = \frac{x - \beta b_1}{a_1} \\
+%y &= \alpha a_2 + \beta b_2 \Rightarrow  \alpha = \frac{y - \beta b_2}{a_2}  = \frac{x - \beta b_1}{a_1}\\
+%\Rightarrow \beta &= \frac{a_1y - a_2x }{a_1 b_2 - a_2 b_1}, \alpha = \frac{b_2 x - b_1 y}{a_1 b_2 - a_2 b_1}.
+%\end{align*}
+%Now, plugging into our euclidian norm, we have the following:
+%\begin{align*}
+%\sqrt{\alpha^2 + \beta^2} &= \sqrt{\left(  \frac{b_2 x - b_1 y}{a_1 b_2 - a_2 b_1}\right)^{2} + \left( \frac{a_1y - a_2x }{a_1 b_2 - a_2 b_1}  \right)^{2}} \\
+%&= \sqrt{\frac{b_{2}^{2} x^2 - 2 b_1 y b_2 x + b_{1}^{2} y^{2} + a_{1}^{2} y^2 -2 a_{2} x a_1 y + a_{2}^{2} x^2}{\left( a_1 b_2 - a_2 b_1\right)^2}} \\
+%&= \sqrt{\frac{(b_{2}^{2} + a_{2}^{2}) x^2 -2 (b_1b_2 + a_1a_2) xy + (b_{1}^{2} + a_{1}^{2}) y^2}{\left( a_1 b_2 - a_2 b_1\right)^2}}
+%\end{align*}
 % Orthonormal basis means a_{1}^{2} + a_{2}^{2} = b_{1}^{2} + b_{2}^{2} = 1, a_1b_1 + a_2b_2 = 0.
+%Let $v =(x,y)^{'} \in \mathbb{R}^2.$ Since $W$ is the standard basis in $\mathbb{R}^2$, $M := \begin{pmatrix} a_1 & b_1 \\ a_2 & b_2\end{pmatrix}^{-1}$ is a mapping from $W$ to $V$, and since $V,W$ are orthonormal then $M$ is an orthonormal matrix, so $M^{'}M = I$.\footnote{$M$ must exist because dim $V$ = dim $W$ = 2.} Then, $Mv$ is $v$ represented in the vector space $V$. Next, note that $ \norm{v} = \sqrt{x^2 + y^2} = \sqrt{v^{'}v} = \sqrt{v^{'}Iv} = \sqrt{v^{'}M^{'}MV} = \sqrt{(Mv)^{'}(Mv)} = \norm{Mv} $, so the euclidean norm is the same for any standard basis. %do I have to prove M invertible?
+
+Let $(x,y)^{'} \in \mathbb{R}^2.$ $\exists v \in \mathbb{R}^2$ such that $v$ is the representation of $(x,y)'$ in the basis of $V$. Since $V$ is orthonormal and $W$ is the standard basis in $\mathbb{R}^2$, $M := \begin{pmatrix} a_1 & b_1 \\ a_2 & b_2\end{pmatrix}$ is a mapping from $V$ to $W$, and since $V$ is orthonormal then $M$ is an orthonormal matrix, so $M^{'}M = I$. Then, $Mv$ is $v$ represented in the vector space $W$, so $Mv = (x,y)^{'}$. Next, note that $ \norm{(x,y)^{'}} = \sqrt{x^2 + y^2} = \sqrt{(x,y) (x,y)^{'}} = \sqrt{(Mv)^{'}(Mv)}  = \sqrt{v^{'}M^{'}Mv}  = \sqrt{v^{'}Iv} =  \sqrt{v^{'}v} = \norm{v} $, so the euclidean norm is the same for any standard basis.
+
+
+
 \section{Question 4}
 We will use the approach described to solve the following equation (with boundary condition) for $y(t) \in \mathbb{R}^2$:
 \begin{equation*}

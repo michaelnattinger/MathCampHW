@@ -1,0 +1,7 @@
+clear; close all; clc
+v = [1 2];
+vn = norm(v);
+b = [1 1; 1 -1];
+for i=1:2
+    b(:,i) = b(:,i)./norm(b(:,i));
+end
