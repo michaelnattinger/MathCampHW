@@ -76,7 +76,7 @@ Bob will travel along the road for some distance $x$, and then turn off the road
 \begin{equation*}
 \min_{x\in[0,12]} x/5 + \sqrt{(12-x)^2 + 25}/3.
 \end{equation*}
-We can take first order conditions of the objective function $g$ with respect to $x$: $\frac{dg}{dx} = 1/5 - \frac{1}{6 \sqrt{(12-x)^2 + 25}}(2(12 - x)) = 0 \Rightarrow 1/5 =  \frac{12 - x}{3 \sqrt{(12-x)^2 + 25}}\Rightarrow (9/25)((12 - x)^2 + 25) = (12 - x)^2 \Rightarrow (9*25)/16 = (12 - x)^2 \Rightarrow (15/4) = (12 - x),-(15/4) = (12 - x)$. If $(12-x)<0$ then $x>12$ so $x\notin [0,12]$, so $(15/4) = (12 - x) \Rightarrow x = 12 - (15/4) \\ \Rightarrow x = (33/4)L.$
+We can take first order conditions of the objective function $g$ with respect to $x$: $\frac{dg}{dx} = 1/5 - \frac{1}{6 \sqrt{(12-x)^2 + 25}}(2(12 - x)) = 0 \Rightarrow 1/5 =  \frac{12 - x}{3 \sqrt{(12-x)^2 + 25}}\Rightarrow (9/25)((12 - x)^2 + 25) = (12 - x)^2 \Rightarrow (9*25)/16 = (12 - x)^2 \Rightarrow (15/4) = (12 - x),-(15/4) = (12 - x)$. If $(12-x)<0$ then $x>12$ so $x\notin [0,12]$, so $(15/4) = (12 - x) \Rightarrow x = 12 - (15/4) \\ \Rightarrow x = (33/4)$ miles.
 \section{Question 2}
 % use defn of derivative here. Answer is no.
 %Since $f$ is differentiable in $B_{\epsilon}(x_0)$, it is also continuous on that interval. Let $\delta \in (0,\epsilon).$ For $x \in (x_0-\delta,x_0), f^{'}(x) = \lim\limits_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h} <0$ so $\exists h^{*} \in (0,\delta)$ such that $\frac{f(x+h^{*}) - f(x)}{h^{*}}<0$ so $f(x+h^{*}) < f(x)$% show x<x_0.
@@ -114,5 +114,5 @@ D^2f(x,y) &= \begin{pmatrix}24x^2 & -1 \\ -1 & 2 \end{pmatrix}. \\
 D^2f(0,0) &= \begin{pmatrix}0 & -1 \\ -1 & 2 \end{pmatrix}, D^2f(1/4,1/8) =  \begin{pmatrix}3/2 & -1 \\ -1 & 2 \end{pmatrix} = D^2f(-1/4,-1/8).
 \end{align*}
 First, we will investigate the point $(0,0)$. Det$(D^2f(0,0) - \lambda I) = 0 \Rightarrow -\lambda(2-\lambda) - 1 = 0 \Rightarrow \lambda^2 -2\lambda -1 = 0 \Rightarrow \lambda =\frac{1}{2} - \frac{\sqrt{5}}{2}, \lambda = \frac{1}{2} + \frac{\sqrt{5}}{2}$. So, one eigenvalue is positive while the other is negative, so $f$ has a saddle point at $(0,0)$.
-Next we will investigate the point $(1/4,-1/4).$ Det$(D^2f(1/4,1/8) - \lambda I) = 0 \Rightarrow (3/2-\lambda)(2-\lambda) - 1 = 0 \Rightarrow \lambda^2 - (7/2)\lambda + 2 = 0 \Rightarrow \lambda = \frac{7}{4} + \frac{\sqrt{17}}{4}, \lambda = \frac{7}{4} - \frac{\sqrt{17}}{4}$. Both eigenvalues are positive, so $f$ has a local minimum at $(1/4,1/2)$ and, since Det$(D^2f(1/4,1/8)) = $ Det$(D^2f(-1/4,-1/8))$, $f$ has a local minimum at $(-1/4,-1/2).$
+Next we will investigate the point $(1/4,-1/8).$ Det$(D^2f(1/4,1/8) - \lambda I) = 0 \Rightarrow (3/2-\lambda)(2-\lambda) - 1 = 0 \Rightarrow \lambda^2 - (7/2)\lambda + 2 = 0 \Rightarrow \lambda = \frac{7}{4} + \frac{\sqrt{17}}{4}, \lambda = \frac{7}{4} - \frac{\sqrt{17}}{4}$. Both eigenvalues are positive, so $f$ has a local minimum at $(1/4,1/2)$ and, since Det$(D^2f(1/4,1/8)) = $ Det$(D^2f(-1/4,-1/8))$, $f$ has a local minimum at $(-1/4,-1/2).$
 \end{document}
