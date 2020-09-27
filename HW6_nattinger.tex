@@ -115,8 +115,8 @@ Let $f$ be continuously differentiable on $X \subset \mathbb{R}^n$. Then, $Df$ e
 $f(1,1) = 0.$ Det$D_Xf = \text{Det} (5x^4 - 2x +1) \Rightarrow \text{Det}D_Xf(1,1) = 5 - 2+1 \neq 0.$ Then, by the implicit function theorem,
 \begin{align*}
 \frac{\partial x(y)}{\partial y}|_{(1,1)} &= - \left(\frac{\partial f}{\partial x}|_{(1,1)}\right)^{-1}\left(\frac{\partial f}{\partial y}|_{(1,1)}\right) \\
-&= - (5x^4 - 2x + 1 |_{(1,1)})^{-1}(-4y^2 - 2|_{(1,1)})\\
-&= - (4)^{-1}(-6) = \frac{3}{2}.
+&= - (5x^4 - 2x + 1 |_{(1,1)})^{-1}(-3y^2 - 2|_{(1,1)})\\
+&= - (4)^{-1}(-5) = \frac{5}{4}.
 \end{align*}
 \section{Question 6}
 \begin{align*}
@@ -126,5 +126,7 @@ D^2f(x,y) &= \begin{pmatrix}24x^2 & -1 \\ -1 & 2 \end{pmatrix}. \\
 D^2f(0,0) &= \begin{pmatrix}0 & -1 \\ -1 & 2 \end{pmatrix}, D^2f(1/4,1/8) =  \begin{pmatrix}3/2 & -1 \\ -1 & 2 \end{pmatrix} = D^2f(-1/4,-1/8).
 \end{align*}
 First, we will investigate the point $(0,0)$. Det$(D^2f(0,0) - \lambda I) = 0 \Rightarrow -\lambda(2-\lambda) - 1 = 0 \Rightarrow \lambda^2 -2\lambda -1 = 0 \Rightarrow \lambda =\frac{1}{2} - \frac{\sqrt{5}}{2}, \lambda = \frac{1}{2} + \frac{\sqrt{5}}{2}$. So, one eigenvalue is positive while the other is negative, so $f$ has a saddle point at $(0,0)$.
-Next we will investigate the point $(1/4,-1/8).$ Det$(D^2f(1/4,1/8) - \lambda I) = 0 \Rightarrow (3/2-\lambda)(2-\lambda) - 1 = 0 \Rightarrow \lambda^2 - (7/2)\lambda + 2 = 0 \Rightarrow \lambda = \frac{7}{4} + \frac{\sqrt{17}}{4}, \lambda = \frac{7}{4} - \frac{\sqrt{17}}{4}$. Both eigenvalues are positive, so $f$ has a local minimum at $(1/4,1/2)$ and, since Det$(D^2f(1/4,1/8)) = $ Det$(D^2f(-1/4,-1/8))$, $f$ has a local minimum at $(-1/4,-1/2).$
+Next we will investigate the point $(1/4,1/8).$ Det$(D^2f(1/4,1/8) - \lambda I) = 0 \Rightarrow (3/2-\lambda)(2-\lambda) - 1 = 0 \Rightarrow \lambda^2 - (7/2)\lambda + 2 = 0 \Rightarrow \lambda = \frac{7}{4} + \frac{\sqrt{17}}{4}, \lambda = \frac{7}{4} - \frac{\sqrt{17}}{4}$. Both eigenvalues are positive, so $f$ has a local minimum at $(1/4,1/2)$ and, since Det$(D^2f(1/4,1/8)) = $ Det$(D^2f(-1/4,-1/8))$, $f$ has a local minimum at $(-1/4,-1/2).$
+
+Assume $\exists x,y \in \mathbb{R}$ such that $f(x,y)<f(1/4,1/8)=f(-1/4,-1/8).$ Then, $2x^4 + y^2 -xy + 1>127/128 \Rightarrow 2x^4 + y^2 -xy + 1/128<0$ so $x,y\notin \mathbb{R}$ which is a contradiction. Thus, $(1/4,1/8),(-1/4,-1/8)$ are global minima. It is clear that no global maxima exists as $f(x,y) \rightarrow \infty$ as $x\rightarrow \pm \infty,y \rightarrow \pm\infty$.
 \end{document}
