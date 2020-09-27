@@ -72,15 +72,19 @@
 \maketitle
 
 \section{Question 1}
-Bob will travel along the road for some distance $x$, and then turn off the road and travel in the exact direction of "Happy Cow". Bob is minimizing his walking time to reach this point: $min_{x\in [0,12]} x/5 + f(x)/3$ where $f(x)$ is the distance (in miles) through the woods that Bob must travel if Bob chooses to walk $x$ miles on the main road. It can easily be shown via simple geometry that $f(x) = \sqrt{(12-x)^2 + 25}$. Thus, Bob solves the following:
+Bob will travel along the road for some distance $x$, and then turn off the road and travel in the exact direction of "Happy Cow". Bob is minimizing his walking time to reach this point: $\min_{x\in [0,12]} x/5 + f(x)/3$ where $f(x)$ is the distance (in miles) through the woods that Bob must travel if Bob chooses to walk $x$ miles on the main road. It can easily be shown via simple geometry that $f(x) = \sqrt{(12-x)^2 + 25}$. Thus, Bob solves the following:
 \begin{equation*}
 \min_{x\in[0,12]} x/5 + \sqrt{(12-x)^2 + 25}/3.
 \end{equation*}
 We can take first order conditions of the objective function $g$ with respect to $x$: $\frac{dg}{dx} = 1/5 - \frac{1}{6 \sqrt{(12-x)^2 + 25}}(2(12 - x)) = 0 \Rightarrow 1/5 =  \frac{12 - x}{3 \sqrt{(12-x)^2 + 25}}\Rightarrow (9/25)((12 - x)^2 + 25) = (12 - x)^2 \Rightarrow (9*25)/16 = (12 - x)^2 \Rightarrow (15/4) = (12 - x),-(15/4) = (12 - x)$. If $(12-x)<0$ then $x>12$ so $x\notin [0,12]$, so $(15/4) = (12 - x) \Rightarrow x = 12 - (15/4) \\ \Rightarrow x = (33/4)$ miles.
+Thus,
+\begin{align*}
+\min_{x\in[0,12]} x/5 + \sqrt{(12-x)^2 + 25}/3 &= (33/20) + \sqrt{(12 - 33/4)^2 + 25}/3 \\ &= 3.733 \text{ hours.}
+\end{align*}
 \section{Question 2}
 % use defn of derivative here. Answer is no.
 %Since $f$ is differentiable in $B_{\epsilon}(x_0)$, it is also continuous on that interval. Let $\delta \in (0,\epsilon).$ For $x \in (x_0-\delta,x_0), f^{'}(x) = \lim\limits_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h} <0$ so $\exists h^{*} \in (0,\delta)$ such that $\frac{f(x+h^{*}) - f(x)}{h^{*}}<0$ so $f(x+h^{*}) < f(x)$% show x<x_0.
-Assume that $x_0$ is a local maximum of $f$. Then $\exists\delta \in (0,\epsilon]$ such that for any $x\in B_{\delta}(x_0) \setminus \{x_0\}, f(x_0)\geq f(x).$ Then, notice that $x_0-\delta /2 \in  B_{\delta}(x_0).$ Then, by the mean value theorem, $\exists c \in (x_0 - \delta/2,x_0)$ such that $f'(c) = \frac{f(x_0) - f(x_0 - \delta/2)}{\delta/2} >0 $ which is a contradiction, so $x_0$ is not a local maximum of $f$. Now assume that $x_0$ is a local minimum of $f$.  Then $\exists\delta \in (0,\epsilon]$ such that for any $x\in B_{\delta}(x_0) \setminus \{x_0\}, f(x_0)\leq f(x).$ Then, notice that $x_0+\delta /2 \in  B_{\delta}(x_0).$ Then, by the mean value theorem, $\exists c \in (x_0,x_0+\delta/2)$ such that $f'(c) = \frac{f(x_0 + \delta/2) - f(x_0)}{\delta/2} >0 $ which is a contradiction, so $x_0$ is not a local minimum of $f$. 
+Assume that $x_0$ is a local maximum of $f$. Then $\exists\delta \in (0,\epsilon]$ such that for any $x\in B_{\delta}(x_0) \setminus \{x_0\}, f(x_0)\geq f(x).$ Then, notice that $x_0-\delta /2 \in  B_{\delta}(x_0).$ Then, by the mean value theorem, $\exists c \in (x_0 - \delta/2,x_0)$ such that $f'(c) = \frac{f(x_0) - f(x_0 - \delta/2)}{\delta/2} \geq0 $ which is a contradiction, so $x_0$ is not a local maximum of $f$. Now assume that $x_0$ is a local minimum of $f$.  Then $\exists\delta \in (0,\epsilon]$ such that for any $x\in B_{\delta}(x_0) \setminus \{x_0\}, f(x_0)\leq f(x).$ Then, notice that $x_0+\delta /2 \in  B_{\delta}(x_0).$ Then, by the mean value theorem, $\exists c \in (x_0,x_0+\delta/2)$ such that $f'(c) = \frac{f(x_0 + \delta/2) - f(x_0)}{\delta/2} \geq0 $ which is a contradiction, so $x_0$ is not a local minimum of $f$. 
 
 \section{Question 3}
 \begin{align*}
@@ -95,7 +99,14 @@ Assume that $x_0$ is a local maximum of $f$. Then $\exists\delta \in (0,\epsilon
 &= 3(2r+4s+t)^2(3r+s+t) + (t+2s+t)(2r+3s+t)(3r+s+t) + (t+2s+t)(2r+4s+t)^2 .
 \end{align*}
 \section{Question 4}
-Let $f$ be continuously differentiable on $X \subset \mathbb{R}^n$. Then, $Df$ exists and is continuous on $ X.$ Let $x_0 \in X$ and let $B_{\epsilon}(x_0) \subset X$ be a closed epsilon ball around $x_0$. Since $Df$ is continuous, it must be bounded on $B_{\epsilon}(x_0)$. Let $m_1^i,m_2^i$ be the upper and lower bounds of $Df$ in dimension $i \in \{ 1,\dots,n\}$ on $B_{\epsilon}(x_0)$, and let $M = \max_{i \in \{1,\dots,n \}, j \in \{ 1,2\} }\{|m_j^i|\}$. Then, $\norm{D_if(x)}\leq \norm{\vec{M}}$ $\forall x \in B_{\epsilon}(x_0)$, for all dimensions $i \in \{ 1 \dots n\}$, where $\vec{M}$ is the vector of size $n $ containing $M$ at every index. Let $x_1,x_2 \in B_{\epsilon}(x_0)$, then we will define $g(t):= f((1-t)x_1 + tx_2)$ for $t \in [0,1].$ Then, by the mean value theorem, there exists $t^{*} \in [0,1]$ such that $g'(t^{*})  = f(x_2) - f(x_1).$ However, note that $g'(t^{*}) = Df((1-t^{*})x_1 + t^{*}x_2)\cdot (x_2 - x_1) = f(x_2) - f(x_1)$. By the Cauchy-Schwartz inequality in each dimension $i \in \{ 1 \dots n\}$, $\norm{f_i(x_2) - f_i(x_1)}\leq \norm{D_if((1-t^{*})x_1 + t^{*}x_2)}\norm{x_{2,i} - x_{1,i}}\leq \norm{\vec{M}}\norm{x_{2,i}-x_{1,i}}$ so $f$ is locally lipschitz on $X$.
+Let $f$ be continuously differentiable on $X \subset \mathbb{R}^n$. Then, $Df$ exists and is continuous on $ X.$ Let $x_0 \in X$ and let $B_{\epsilon}(x_0) \subset X$ be a closed epsilon ball around $x_0$. Since $Df$ is continuous, it must be bounded on $B_{\epsilon}(x_0)$. Let $m_1^{i,j},m_2^{i,j}$ be the upper and lower bounds of $Df$ in dimension $i \in \{ 1,\dots,n\}$ with respect to the input in dimension $j \in \{ 1,\dots,n\}$ on $B_{\epsilon}(x_0)$, and let $M = \max_{i,j \in \{1,\dots,n \}, k \in \{ 1,2\} }\{|m_k^{i,j}|\}$. Then, $\norm{D_if(x)}\leq \norm{\vec{M}}$ $\forall x \in B_{\epsilon}(x_0)$, for all dimensions $i \in \{ 1 \dots n\}$, where $\vec{M}$ is the vector of size $n $ containing $M$ at every index. Let $x_1,x_2 \in B_{\epsilon}(x_0)$, then we will define $g(t):= f((1-t)x_1 + tx_2)$ for $t \in [0,1].$ Then, by the mean value theorem, there exists $t^{*} \in [0,1]$ such that $g'(t^{*})  = f(x_2) - f(x_1).$ However, note that $g'(t^{*}) = Df((1-t^{*})x_1 + t^{*}x_2)\cdot (x_2 - x_1) = f(x_2) - f(x_1)$. By the Cauchy-Schwartz inequality in each dimension $i \in \{ 1 \dots n\}$, 
+\begin{align*}
+|f_i(x_2) - f_i(x_1)|&\leq \norm{D_if((1-t^{*})x_1 + t^{*}x_2)}|x_{2,i} - x_{1,i}|\\ 
+&\leq \norm{\vec{M}}|x_{2,i}-x_{1,i}|\\
+\Rightarrow \sqrt{\sum_{i=1}^n (f_i(x_2) - f_i(x_1))^2} &\leq \sqrt{\sum_{i=1}^n \norm{\vec{M}}^2(x_{2,i} - x_{1,i})^2 } \\
+\Rightarrow \norm{f(x_2) - f(x_1)} &\leq \sqrt{n}\norm{\vec{M}}\norm{x_{2}-x_{1}} 
+\end{align*}
+ so $f$ is locally lipschitz on $X$.
 %Let $m_1,m_2$ be the upper and lower bounds of $f'$ on $B_{\epsilon}(x_0)$, and let $M = \max\{|m_1|,|m_2| \}$. Then, $|f'(x)|\leq M$ $\forall x \in B_{\epsilon}(x_0).$ Let $x_1,x_2 \in B_{\epsilon}(x_0)$ and assume for the purpose of contradiction that $|f(x_1) - f(x_2)|>M|x_1 - x_2|$. Then, by the mean value theorem $\exists c \in (x_1,x_2)$ such that $f'(c)=\frac{f(x_1) - f(x_2)}{x_2 - x_1},$ and note that this implies $|f'(c)|>M$. $c \in  B_{\epsilon}(x_0)$ so this is a contradiction, and $|f(x_1) - f(x_2)|\leq M|x_1 - x_2|$, so $f$ is locally lipschitz on $X$.
 \section{Question 5}
 % follow steps from late in notes
