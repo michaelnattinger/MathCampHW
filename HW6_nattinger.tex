@@ -104,7 +104,7 @@ Let $f$ be continuously differentiable on $X \subset \mathbb{R}^n$. Then, $Df$ e
 |f_i(x_2) - f_i(x_1)|&\leq \norm{D_if((1-t^{*})x_1 + t^{*}x_2)}|x_{2,i} - x_{1,i}|\\ 
 &\leq \norm{\vec{M}}|x_{2,i}-x_{1,i}|\\
 \Rightarrow \sqrt{\sum_{i=1}^n (f_i(x_2) - f_i(x_1))^2} &\leq \sqrt{\sum_{i=1}^n \norm{\vec{M}}^2(x_{2,i} - x_{1,i})^2 } \\
-\Rightarrow \norm{f(x_2) - f(x_1)} &\leq \sqrt{n}\norm{\vec{M}}\norm{x_{2}-x_{1}} 
+\Rightarrow \norm{f(x_2) - f(x_1)} &\leq \norm{\vec{M}}\norm{x_{2}-x_{1}} 
 \end{align*}
  so $f$ is locally lipschitz on $X$.
 %Let $m_1,m_2$ be the upper and lower bounds of $f'$ on $B_{\epsilon}(x_0)$, and let $M = \max\{|m_1|,|m_2| \}$. Then, $|f'(x)|\leq M$ $\forall x \in B_{\epsilon}(x_0).$ Let $x_1,x_2 \in B_{\epsilon}(x_0)$ and assume for the purpose of contradiction that $|f(x_1) - f(x_2)|>M|x_1 - x_2|$. Then, by the mean value theorem $\exists c \in (x_1,x_2)$ such that $f'(c)=\frac{f(x_1) - f(x_2)}{x_2 - x_1},$ and note that this implies $|f'(c)|>M$. $c \in  B_{\epsilon}(x_0)$ so this is a contradiction, and $|f(x_1) - f(x_2)|\leq M|x_1 - x_2|$, so $f$ is locally lipschitz on $X$.
