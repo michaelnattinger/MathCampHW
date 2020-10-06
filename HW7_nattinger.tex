@@ -1,0 +1,109 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{HW7}
+\author{Michael B. Nattinger\footnote{I worked on this assignment with my study group: Alex von Hafften, Andrew Smith, and Ryan Mather. I have also discussed problem(s) with Emily Case, Sarah Bass, and Danny Edgel.}}
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+Let $k=1,x_1\in X.$ Then $\lambda_i=1$ and $\lambda_1x_1=x_1\in X.$
+
+Assume that the statement holds for $k$, we will prove that it holds also for $k+1.$
+
+Let $\lambda_1,\dots,\lambda_{k+1} \geq 0$ with $\sum_{i=1}^{k+1}\lambda_i = 1.$ Let $x_1,\dots,x_{k+1} \in X$. If $S := \sum_{i=1}^{k} \lambda_i=0$ then $\lambda_{k+1}=1 \Rightarrow \sum_{i=1}^{k+1} \lambda_i x_i = x_{k+1} \in X$. Now assume $S>0$. Define $\omega_i = \frac{\lambda_i}{S} \forall i \in \{1,\dots,k \}$. Then note that $\sum_{i=1}^k \omega_i = 1$ so $x^{*}:= \sum_{i=1}^k \omega_i x_i \in X$. Also, note that $S = 1-\lambda_{k+1}$. Then,
+\begin{align*}
+\sum_{i=1}^{k+1} \lambda_i x_i = Sx^{*} + \lambda_{k+1} x_{k+1} = Sx^{*} + (1-S)x_{k+1} \in X
+\end{align*}
+by the convexity of $X$.
+
+\section{Question 2}
+
+Let $S$ be a set and let $C$ be the set of all convex combinations of the elements of $S$.
+
+Let $x\in C.$ Then, for any convex set $V$ which contains $S$, $x\in V$ by the statement proved in the previous question, so $x \in \text{co}(S)$. Thus, $C\subseteq \text{co}(S)$.
+
+%Let $x\notin C.$ Then, assume for the purpose of contradiction that $x \in 
+Let $x_1,x_2 \in C.$ Then, $x_1,x_2 $ are linear combinations of points in $S,$ so for some $\lambda_1,\dots,\lambda_n,\omega_1,\dots,\omega_m$ and $y_1,\dots,y_n,z_1,\dots,z_m \in S$, $x_1 = \sum_{i=1}^n\lambda_iy_i, x_2 = \sum_{i=1}^m\omega_iz_i.$ Then, for $0 \leq\tau_1,\tau_2\leq 1,\tau_1+\tau_2=0, \tau_1x_1+\tau_2x_2 =  \tau_1\sum_{i=1}^n\lambda_iy_i + \tau_2\sum_{i=1}^m\omega_iz_i$. Then, since $\sum_{i=1}^n \tau_1\lambda_i = \tau_1\sum_{i=1}^n \lambda_i = \tau_1$ and by identical logic $\sum_{i=1}^m \tau_2\omega_i = \tau_2$, $\sum_{i=1}^n \tau_1\lambda_i + \sum_{i=1}^m \tau_1\omega_i  = \tau_1+\tau_2 = 1$ so $x_1+x_2 \in C$ so $C$ is convex. Clearly $S\subseteq C$ as for any $x\in S$, $x = 1x\in C$, so $C$ is a convex set containing $S$ so $\text{co}(S)\subseteq C \Rightarrow \text{co}(S) = C$.
+
+\section{Question 3}
+Let $X$ be a convex set and let $x,y\in \text{cl} X,\lambda \in [0,1].$ Then, if $x$ and $y$ are both in $X$, by convexity $\lambda x+(1-\lambda)y\in X$ so $\lambda x+(1-\lambda)y\in \text{cl}X$. Assume now that this is not the case. Consider the point $\lambda x+(1-\lambda)y.$ Let $\epsilon>0.$ As $x,y$ are either limit points or elements of $X$, $\exists x',y'\in X$ such that $d(x',x)<\epsilon,d(y',y)<\epsilon \Rightarrow d(\lambda x+(1-\lambda)y,\lambda x'+(1-\lambda)y')<\epsilon$, and $\lambda x+(1-\lambda)y \neq \lambda x'+(1-\lambda)y' \in X$ by convexity so $\lambda x+(1-\lambda)y$ is a limit point of $X$, so $\lambda x+(1-\lambda)y \in \text{cl}X$.
+
+\section{Question 4}
+Let $f$ be concave. Then, let $(x_1,y_1),(x_2,y_2) \in \text{hyp} f, \lambda \in [0,1].$ Then, for $x_3:=\lambda x_1 +(1-\lambda )x_2,$ $y_3 =f(x_3)\geq \lambda f(x_1) + (1-\lambda) f(x_2) = \lambda y_1 + (1-\lambda)y_2 \rightarrow (x_3,y_3) \in \text{hyp} f$ so hyp$X$ is convex.
+
+Let hyp$X$ be convex. Then, let $x_1,x_2 \in X,\lambda \in [0,1]$ with $y_1 = f(x_1),y_2 = f(x_2)$. Then, $(x_1,y_1),(x_2,y_2) \in \text{hyp} X$ so $(\lambda x_1 + (1-\lambda)x_2 , \lambda y_1 + (1-\lambda)y_2):= (x_3,y_3) \in \text{hyp}X \Rightarrow \lambda f(x_1) + (1-\lambda)f(x_2)= \lambda y_1 + (1-\lambda)y_2 =y_3 \leq f(x_3) = f(\lambda x_1 + (1-\lambda)x_2 )$ so $f$ is concave.
+
+\section{Question 5}
+Let $X,Y$ be disjoint, convex, and closed subsets of $\mathbb{R}^n$, and let $X$ be compact. Then define $A \{ y-x : x\in X, y \in Y\}.$ Let $a_n$ be a sequence in $A$ such that $a_n \rightarrow a \in \mathbb{R}^n$. There exist $x_n,y_n$ such that $a_n = y_n - x_n \forall n.$ Since $X$ is compact, $\exists$ a sequence $\{ x_{n_k}\}\rightarrow x\in X$. Since $a_{n_k} \rightarrow a,x_{n_k} \rightarrow x, \exists y \in \mathbb{R}^n$ such that $y_{n_k} \rightarrow y,$\footnote{If this were not the case then clearly $a_{n_k},x_{n_k}$ would not simultaneously be able to converge.} and since $Y$ is closed, $y\in Y$. Thus, $\{ a_{n_k} \} \rightarrow y-x \in A$, and since $a_n \rightarrow a,$ it must be that $y-x = a,$ so $a \in A$. Now we apply the theorem from lecture, and strictly separate $A$ from $\{ 0\}$: $\exists p$ such that $p'(y-x)>\beta>0$ for some $\beta$, $\forall x\in X,y\in Y.$ Since $X$ is compact, note that $\exists x^{*}$ such that $p'x^{*}\geq p'x$ $\forall x\in X$. Using the strict separation constant, we have that $p'x<\frac{\beta}{2}+p'x^{*}.$ Now we also have that $p'y>\beta +p'x$, and thus it must be that $p'y>\beta +p'x^{*} since x^{*}\in X.$. Thus, $p'y>\frac{\beta}{2} +p'x^{*}$, and therefore $p'x<\frac{\beta}{2}p'x^{*}<p'y$ $\forall x\in X, y\in Y.$
+\section{Question 6}
+Assume there exists an agreeable trade vector $x$. Then, $\inf_{\pi \in \Pi_A}\sum_{i=1}^n \pi_ix_i>0$ and $\inf_{\pi \in \Pi_B} \pi(-x_i)>0 \Rightarrow \sup_{\pi \in \Pi_B} \pi(x_i)<0$. Thus, for any $\pi\in \Pi_A, \sum_{i=1}^n \pi_ix_i>0$ so $\pi \notin \Pi_B$. Similarly, for any $\pi\in \Pi_B, \sum_{i=1}^n \pi_ix_i<0$ so $\pi \notin \Pi_A$. Thus, $\Pi_A \cap \Pi_B = \emptyset$.%Then, $\Pi_{A}$ and $\Pi_{B}$ are strictly separated by $H(\pi,0)$ so $\Pi_A,\Pi_B$ are disjoint.
+
+Assume that $\Pi_A,\Pi_B$ are disjoint. Then we can apply the separating hyperplanes theorem and for some $a\in\mathbb{R},x \in\mathbb{R}^n\setminus \{0\}$, $\sum_{i=1}^n\pi_{1,i}x_i\leq a \leq\sum_{i=1}^n\pi_{2,i}x_i$ $\forall \pi_1 \in \Pi_A,\pi_2 \in \Pi_B.$ We then know that there exists a trade $y$ such that $y_i = x_i-a \forall i \in \{1 \dots n \}$, and then $\sum_{i=1}^n\pi_{1,i}y_i\leq 0 \leq\sum_{i=1}^n\pi_{2,i}y_i$ so $y$ is an agreeable trade vector.
+
+\end{document}
